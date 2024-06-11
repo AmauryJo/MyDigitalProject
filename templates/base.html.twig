@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>Welcome ! - {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -11,7 +11,67 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+    
     <body>
-        {% block body %}{% endblock %}
+        <nav>
+            <div class="containerNav">
+                <ul class="navbar">
+                    <li><a class="linkNav" href="/home"><img src="{{ asset('img/MDM.svg') }}"></a></li>
+                    <li><a class="linkNav" href="/home">Accueil</a></li>
+                    <li><a class="linkNav" href="#">Blog</a></li>
+                    <li><a class="linkNav" href="/contact">Assistance</a></li>
+                    <li><a class="linkNav" href="/login">Accès recruteur</a></li>
+                    <img src="{{ asset('img/navSeparator.svg') }}">
+                    <li><a class="linkNav" href="/register">Login</a></li>
+                    <li><a class="linkNav btnCtaNav" href="/register">Trouver un job</a></li>
+                </ul>      
+            </div>
+
+        </nav>
+        
+        <div class="">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer>
+            <div class="containerFooter">
+                <div class="leftFooter">
+                    <div class="btnLogin">
+                        <button class="btnLoginFooter">Login</button>
+                    </div>
+                    <div class="btnFindJob">
+                        <button class="btnFindJobFooter">Trouver un job</button>
+                    </div>
+                </div>
+                <div class="rightFooter">
+                    <div class="leftLink">
+                        <ul class="footerLinks">
+                        <h3>A propos</h3>
+                            <li><a href="/">Politique de confidentialité</a></li>
+                            <li><a href="/">Conditions d'utilisation</a></li>
+                            <li><a href="/">Contactez-nous</a></li>
+                        </ul>
+                    </div>
+                    <div class="rightLink">
+                        <ul class="footerLinks">
+                        <h3>A propos</h3>
+                            <li><a href="/">Politique de confidentialité</a></li>
+                            <li><a href="/">Conditions d'utilisation</a></li>
+                            <li><a href="/">Contactez-nous</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="bottomFooter">
+                <div class="bottomFooterLeft">
+                    <p>2024 MDM Emploi</p>
+                </div>
+                <div class="bottomFooterRight">
+                    <div class="LinkedIn"><a href="#">LinkedIn</a></div>
+                    <div class="Instagram"><a href="#">Instagram</a></div>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

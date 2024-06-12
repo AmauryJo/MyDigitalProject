@@ -2,6 +2,11 @@
     color: #35C89F; 
 }
 
+.erreurMessage{
+    color: red;
+    text-align: center;
+}
+
 .containerLogin{
     padding-top: 5%;
     width: 50%;
@@ -30,7 +35,7 @@
         }
 
         .caseCoche{
-            width: 100%;
+            margin-top: 3%;
         }
 
         .btnContainer{

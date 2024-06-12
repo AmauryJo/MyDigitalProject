@@ -8,13 +8,14 @@ security:
         demandeur_provider:
             entity:
                 class: App\Entity\Demandeur
+                property: mail
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: demandeur_provider  # Utilisez ce fournisseur pour le pare-feu main
             custom_authenticator: App\Security\DemandeurAuthenticator
             logout:
                 path: app_logout

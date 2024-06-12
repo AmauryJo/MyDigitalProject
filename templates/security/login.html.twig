@@ -9,10 +9,6 @@
 
 {% block body %}
 <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
     {% if app.user %}
         <div class="mb-3">
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
@@ -20,27 +16,27 @@
     {% endif %}
 
     <div class="containerLogin">
+        <h1 class="greenTitle">Connexion !</h1>
+        <p>Pas encore de compte ? <a href="/register"><span class="greenTitle">Inscrivez-vous</span></a></p>
         <div class="formContainer">
-            <h1 class="greenTitle">Connexion</h1>
-            <label for="inputMail">Mail</label>
+            <p class="inputTitle">Mail</p>
             <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control inputForm" autocomplete="username" required autofocus>
-            <label for="inputPassword">Password</label>
+            <p class="inputTitle">Password</p>
             <input type="password" name="password" id="inputPassword" class="form-control inputForm" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <div class="checkbox mb-3">
+            <div class="caseCoche">
                 <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
+                    <input type="checkbox" name="_remember_me"> Se rappeler de moi
                 </label>
             </div>
+            {% if error %}
+                <div class="erreurMessage">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
             <div class="btnContainer">
-                <button class="btnSubmit" type="submit">Sign in</button>      
-            </div>
+            <button class="btnSubmit" type="submit">Se connecter</button>      
         </div>
     </div>
-        
-
-
 </form>
 {% endblock %}

@@ -20,12 +20,13 @@
                     <li><a class="linkNav" href="/home">Accueil</a></li>
                     <li><a class="linkNav" href="/blog">Blog</a></li>
                     <li><a class="linkNav" href="/contact">Assistance</a></li>
-                    <li><a class="linkNav" href="/login">Accès recruteur</a></li>
+                    <li><a class="linkNav" href="/recruteur">Accès recruteur</a></li>
                     <img src="{{ asset('img/navSeparator.svg') }}">
                     {% if app.user %}
-                        <li><a class="linkNav" href="/contact">Mon Compte</a></li>
+                        <li><a class="linkNav" href="/profil">Mon Compte</a></li>
+                        <li><a href="{{ path('app_logout') }}">Logout</a></li>
                     {% else %}
-                        <li><a class="linkNav" href="/register">Login</a></li>
+                        <li><a class="linkNav" href="/login">Login</a></li>
                     {% endif %}
 
                     <li><a class="linkNav btnCtaNav" href="/register">Trouver un job</a></li>

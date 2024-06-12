@@ -5,7 +5,6 @@
     {{ parent() }}
 {% endblock %}
 
-
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
@@ -17,22 +16,96 @@
 
 {% block body %}
 <div class="containerInscription">
-    <h1>S'inscrire</h1>
-    {{ form_errors(registrationForm) }}
-
+    <h1 class="greenTitle">S'inscrire !</h1>
+    <p>Déjà un compte ? <a href="/login"><span class="greenTitle">Connectez-vous</span></a></p>
     <div class="formContainer">
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.mail, {
-            attr: {'class': 'mailInput'}
-        }) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        
+        <div>
+            <p>Adresse mail</p>
+            {{ form_row(registrationForm.mail, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Adresse mail'}
+            }) }}
+        </div>
+        <div>
+            <p>Mot de passe</p>
+            {{ form_row(registrationForm.plainPassword, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Mot de passe'}
+            }) }}
+        </div>
+        <div>
+            <p>Nom</p>
+            {{ form_row(registrationForm.nom, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Nom'}
+            }) }}
+        </div>
+        <div>
+            <p>Prénom</p>
+            {{ form_row(registrationForm.prenom, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Prénom'}
+            }) }}
+        </div>
+        <div>
+            <p>Téléphone</p>
+            {{ form_errors(registrationForm.telephone) }}
+            {{ form_row(registrationForm.telephone, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Téléphone'}
+            }) }}
+        </div>
+        <div>
+            <p>Ville</p>
+            {{ form_row(registrationForm.ville, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Ville'}
+            }) }}
+        </div>
+        <div>
+            <p>Code Postal</p>
+            {{ form_errors(registrationForm.code_postal) }}
+            {{ form_row(registrationForm.code_postal, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Code Postal'}
+            }) }}
+        </div>
+        <div>
+            <p>Numéro de Rue</p>
+            {{ form_errors(registrationForm.numero_rue) }}
+            {{ form_row(registrationForm.numero_rue, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Numéro de Rue'}
+            }) }}
+        </div>
+        <div>
+            <p>Rue</p>
+            {{ form_row(registrationForm.rue, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Rue'}
+            }) }}
+        </div>
+        <div style="display: flex; align-items: center;">
+            <div style="margin-right: 10px;">
+                <p>Acceptation des <span class="greenTitle" style="cursor: pointer; text-decoration: underline;">termes</span></p>
+            </div>
+            <div style="width: 30px;">
+            {{ form_row(registrationForm.agreeTerms, {
+                'label': false,
+                    'attr': {'class': 'inputForm caseCoche'}
+                }) }}           
+            </div>
+        </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        {{ form_errors(registrationForm) }}
+
+        <div class="btnContainer">
+            <button type="submit" class="btnSubmit">Register</button>
+        </div>
+
+        {{ form_end(registrationForm) }}
     </div>
 </div>
 {% endblock %}
-   

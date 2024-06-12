@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\DemandeurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -18,30 +18,62 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZÀ-ÿ\-\' ]+$/',
+        message: 'Le nom doit contenir uniquement des lettres, des tirets, des apostrophes et des espaces.'
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZÀ-ÿ\-\' ]+$/',
+        message: 'Le prénom doit contenir uniquement des lettres, des tirets, des apostrophes et des espaces.'
+    )]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 50)]
     private ?string $mail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex(
+        pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+        message: 'Le mot de passe doit contenir au moins 8 caractères, inclure une majuscule, une minuscule, un chiffre et un caractère spécial.'
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 15)]
+    #[Assert\Regex(
+        pattern: '/^\d+$/',
+        message: 'Le numéro de téléphone doit contenir uniquement des chiffres.'
+    )]
     private ?string $telephone = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZÀ-ÿ\-\' ]+$/',
+        message: 'La ville doit contenir uniquement des lettres, des tirets, des apostrophes et des espaces.'
+    )]
     private ?string $ville = null;
 
     #[ORM\Column(length: 5)]
+    #[Assert\Regex(
+        pattern: '/^\d+$/',
+        message: 'Le code postal doit contenir uniquement des chiffres.'
+    )]
     private ?string $codePostal = null;
 
     #[ORM\Column]
+    #[Assert\Regex(
+        pattern: '/^\d+$/',
+        message: 'Le numéro de rue doit contenir uniquement des chiffres.'
+    )]
     private ?int $numeroRue = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-ZÀ-ÿ0-9\-\' ]+$/',
+        message: 'Le nom de la rue doit contenir uniquement des lettres, des chiffres, des tirets, des apostrophes et des espaces.'
+    )]
     private ?string $rue = null;
 
     #[ORM\Column(nullable: true)]

@@ -3,14 +3,12 @@
 {% block title %}Accueil{% endblock %}
 {% block head %}
     {{ parent() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
 {% endblock %}
 
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
 {% block javascripts %}

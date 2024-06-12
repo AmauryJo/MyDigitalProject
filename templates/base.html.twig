@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Welcome ! - {% block title %}{% endblock %}</title>
+        <title>MDM Emploi ! - {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -18,20 +18,26 @@
                 <ul class="navbar">
                     <li><a class="linkNav" href="/home"><img src="{{ asset('img/MDM.svg') }}"></a></li>
                     <li><a class="linkNav" href="/home">Accueil</a></li>
-                    <li><a class="linkNav" href="#">Blog</a></li>
+                    <li><a class="linkNav" href="/blog">Blog</a></li>
                     <li><a class="linkNav" href="/contact">Assistance</a></li>
                     <li><a class="linkNav" href="/login">Accès recruteur</a></li>
                     <img src="{{ asset('img/navSeparator.svg') }}">
-                    <li><a class="linkNav" href="/register">Login</a></li>
+                    {% if app.user %}
+                        <li><a class="linkNav" href="/contact">Mon Compte</a></li>
+                    {% else %}
+                        <li><a class="linkNav" href="/register">Login</a></li>
+                    {% endif %}
+
                     <li><a class="linkNav btnCtaNav" href="/register">Trouver un job</a></li>
                 </ul>      
             </div>
 
         </nav>
         
-        <div class="">
-            {% block body %}{% endblock %}
+        <div class="containerAccesibility">
+            <button class="btnAccesibility"><img src="{{ asset('img/accessibilityBtn.svg') }}" alt="Bouton accessibilité"></button>
         </div>
+            {% block body %}{% endblock %}
 
         <footer>
             <div class="containerFooter">

@@ -1,0 +1,526 @@
+.container{
+    display: flex;
+
+    .left{
+        width: 50%;
+
+        .firstSection{
+            height: 800px;
+            padding-left: 25%;
+
+            .containerRecherche{
+                padding-top: 25%;
+                width: 80%;
+
+                .inputContainner{
+                    display: flex;
+                    background-color: #F9F9F9;
+                    border-radius: 25px;
+                    padding: 6px;
+                }
+
+                .btnRechercher{
+                    background-color: #0F172A;
+                    border-radius: 25px;
+                    color: white;
+                    padding: 15px;
+                    border: none;
+                    font-size: 16px;
+                }
+
+                .inputRecherche{
+                    border: none;
+                    margin-right: 10px;
+                    background-color: #F9F9F9;
+                }
+
+                .spanTexte{
+                    margin-left: 20%;
+                }
+            }
+            .title{
+                font-weight: 400;
+            }
+        }
+
+        .secondSection{
+            background-color: #F9F9F9;
+            padding-top: 25px;
+
+            .imgContainer{
+                width: 80%;
+                margin: auto;
+            }
+
+        }
+
+        .thirdSection{
+            padding-top: 25%;
+            .title{
+                font-weight: 400;
+                margin-top: 0 !important;
+            }
+
+            .findJobButton{
+                background-color: #0F172A;
+                border-radius: 25px;
+                color: white;
+                padding: 15px;
+                border: none;
+                font-size: 16px;
+            }
+        }
+    }
+    .right{
+        width: 50%;
+
+        .firstSection
+        {
+            height: 800px;
+            background-image: url('../../img/illustration1.png');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+        
+        .secondSection{
+            height: 385px;
+            padding-top: 20%;
+           
+
+            .title{
+                font-weight: 400;
+                margin-top: 0 !important;
+            }
+        }
+
+        .thirdSection{
+            height: 600px;
+            background-image: url('../../img/illustration3.png');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+
+.statContainer{
+    background-color: #35C89F;
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .title{
+        margin-top: 0 !important;
+        color: white;
+        font-weight: 400;
+    }
+
+    .containerChiffre{
+        display: flex;
+        justify-content: space-between;
+
+        .boxChiffre{
+            width: 20%;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            .descriptionChiffre{
+                margin-top: 50px;
+            }
+        }
+    }
+
+    .containerChiffreLong{
+        margin-top: 3%;
+        display: flex;
+        justify-content: space-between;
+
+        .boxChiffreLong{
+            width: 45%;
+            background-color: white;
+            border-radius: 25px;
+            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            .descriptionChiffre{
+                margin-top: 50px;
+            }
+        }
+    }
+}
+
+.containerMondeTravail{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .containerBlog{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5%;
+
+        .containerArticle{
+            min-height: 250px;
+            padding: 10px;
+            background-color: #F9F9F9;
+            border-radius: 7px;
+
+            .divImgContainer{
+                border-radius: 7px;
+                width: 100%;
+                height: 80%;
+                background-image: url('../../img/home/imgMondeTravail.png');
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat;
+            }
+
+            .descriptionContainer{
+                display: flex;
+
+                .btnArrow{
+                    margin-top: 16px;
+                    border: none;
+                    background-color: #0F172A;
+                    color: white;
+                    padding: 5px;
+                    border-radius: 15px;
+                }
+
+                .imgBtnArrow{
+                    width: 22px;
+                }
+            }
+        }
+    }
+
+}
+
+.containerOffre{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .titleOffre{
+        text-align: center;        
+    }
+
+    .offreCard{
+        padding: 10px;
+        background-color: #F9F9F9;
+        border-radius: 7px;
+        margin-bottom: 20px;
+
+        .detailCard{
+            display: flex;
+            justify-content: space-between;
+            gap: 3%;
+
+            .leftCard{
+                width: 20%;
+                height: 100%;
+
+                .imgContainer{
+                    border-radius: 7px;
+                    width: 100%;
+                    height: 250px;
+                    background-image: url('../../img/home/offreImg.png');
+                    background-size: cover; 
+                    background-position: center; 
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .rightCard{
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+
+                .containerDate{
+                    p{
+                        color: grey
+                    }
+            }
+
+                .containerTag{
+                    display: flex;
+                    gap: 10px;
+
+                    .tagCDI, .tagTeleTravail, .tagFrance{
+                        border-radius: 3px;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        color: #0F172A;
+                        padding: 3px;
+                        border-radius: 5px;
+                    }
+                    .imgTag{
+                        margin-right: 3px;
+                    }
+                }
+
+                .containerCTA{
+                    display: flex;
+                    width: 30%;
+                    margin: auto;
+                    gap: 10%;
+
+                    .btnCta{
+                        background-color: #0F172A;
+                        border-radius: 25px;
+                        color: white;
+                        padding: 15px;
+                        border: none;
+                        font-size: 16px;
+                    }
+                    .btnVoirOffre{
+                        button{
+                            background-color: #ffff;
+                            border-radius: 25px;
+                            color: white;
+                            padding: 15px;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                            font-size: 16px;
+                            color: #0F172A
+                        }
+                    }
+                    .btnPostuler{
+                        button{
+                            background-color: #0F172A;
+                            border-radius: 25px;
+                            color: white;
+                            padding: 15px;
+                            border: none;
+                            font-size: 16px;
+                        }
+                    }
+                }
+                .containerInfo{
+                    width: 70%;
+                }
+            }
+        }
+    }
+}
+
+.motEquipe{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #0F382D;
+
+    .containerMot{
+        width: 60%;
+        margin-bottom: 10%;
+        h1{
+            font-size: 50px;
+            margin-top: 0 !important;
+            color: white;
+        }
+
+        .titrePolice{
+            color: #A2E6D3;
+            font-family: 'GT-ALPINA';
+        }
+    }
+
+    .motGeneralEquipe{
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: auto;
+
+        .phrasePresentation{
+            width: 40%;
+            color: #FFFFFF
+        }
+    }
+}
+
+.containerFindJob{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .containerCard{
+        padding: 1%;
+
+        .row{
+            display: flex;
+            justify-content: space-between;
+            margin: 1%;
+
+            p{
+                margin-top: 0 !important;
+            }
+
+
+            .cardContainer{
+                width: 31%;
+                height: 315px;
+                background-color: #F9F9F9;
+                border-radius: 7px;
+                padding: 1%;
+                position: relative;
+
+                .containerImg{
+                    text-align: center ;
+                }
+
+                .btnContainer{
+                    position: absolute;
+                    bottom: 10px; /* Ajustez cette valeur selon vos besoins */
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    .btnVoirOffre{
+                        background-color: #0F172A;
+                        border-radius: 25px;
+                        color: white;
+                        padding: 15px;
+                        border: none;
+                        font-size: 16px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.containerFindJobInFrance{
+    background-color: #F9F9F9;
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .titleJobFrance{
+        width: 60%;
+    }
+
+    .cardContainerVille{
+        display: flex;
+        justify-content: space-between;
+
+        .cardVille{
+            width: auto;
+            height: auto;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+
+    .containerTagVille{
+        margin-top: 3%;
+
+        .rowTag{
+            margin-bottom: 1%;
+            display: flex;
+            justify-content: space-between;
+            .tag{
+                padding-top: 3px;
+                padding-bottom: 3px;
+                background-color: #FFFFFF;
+                border-radius: 4px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                width: 7%;
+                text-align: center;
+
+                p{
+                    margin: 0;
+                }
+            }
+        }
+
+    }
+}
+
+.containerQuestion{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .row{
+        display: flex;
+
+        .left{
+            width: 40%;
+            text-align: center;
+        }
+
+        .right{
+            width: 60%;
+            text-align: center;
+        }
+    }
+
+    .row2{
+        display: flex;
+
+        .left{
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+
+            .containerBtn{
+                position: relative;
+                top: 0;
+                .btnPoserQuestion{
+                    background-color: #FFFFFF;
+                    border: 1px solid #0F172A;
+                    border-radius: 25px;
+                    color: #0F172A;
+                    padding: 15px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .right{
+            width: 60%;
+            text-align: center;
+
+            .accordion {
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .accordion-item {
+                border-bottom: 1px solid #ccc;
+            }
+            
+            .accordion-header {
+                padding: 15px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .accordion-header:hover {
+                background-color: #f1f1f1;
+            }
+            
+            .accordion-content {
+                display: none;
+                padding: 15px;
+            }
+            
+            .accordion-header::after {
+                content: '+';
+                font-size: 20px;
+            }
+            
+            .accordion-header.active::after {
+                content: '-';
+            }
+        }
+    }
+}

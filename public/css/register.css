@@ -1,0 +1,20 @@
+.containerInscription {
+    margin-top: 3%;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column; /* Alignement des enfants en colonne */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    height: 100vh;
+
+    .formContainer{
+        width: 50%;
+        height: 50%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        justify-content: center;
+    }
+
+}

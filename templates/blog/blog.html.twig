@@ -1,0 +1,187 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<div class="headerImg"></div>
+
+<div class="containerMondeTravail">
+    <div class="containerTop">
+        <div class="containerTitle">
+            <h1 class="title">Les actualités de la<br><span class="greenTitle">semaine.</span></h1>
+        </div>
+        <div class="containerSvg">
+            <img src="{{ asset('img/blog/svgActualite.svg') }}" alt="">
+        </div>
+    </div>
+    <div class="containerBlog">
+        <div class="containerArticle">
+            <div class="divImgContainer"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="containerArticle">
+            <div class="divImgContainer"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="containerArticle">
+            <div class="divImgContainer"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="" class="btnVoirActualites">Voir les actualités</a>
+</div>
+
+<div class="searchBlog">
+    <div class="row">
+        <div class="left">
+            <div class="inputContainer">
+                    <img src="{{ asset('img/blog/searchSvg.svg') }}" alt="">
+                    <input class="inputRecherche" type="text" name="" id="" placeholder="Rechercher">
+            </div>
+            <div class="btnFiltreContainer">
+                <button class="btnFiltre">Filtres</button>
+            </div>
+        </div>
+        <div class="right">
+            <h1>Les articles des<br> <span class="greenTitle">professionels.</span></h1>
+        </div>
+    </div>
+</div>
+
+<div class="containerBlogs">
+    <div class="containerCard">
+        <div class="left">
+            <div class="imgContainer"></div>
+        </div>
+        <div class="right">
+            <div class="textContainer">
+                <h3 class="titleCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</h3>
+                <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                <div class="bottomContainer">
+                    <div class="containerDate">
+                        <p>Publié par Sophie Morrel le 21/04/2024</p>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerCard">
+        <div class="left">
+            <div class="imgContainer"></div>
+        </div>
+        <div class="right">
+            <div class="textContainer">
+                <h3 class="titleCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</h3>
+                <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                <div class="bottomContainer">
+                    <div class="containerDate">
+                        <p>Publié par Sophie Morrel le 21/04/2024</p>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerCard">
+        <div class="left">
+            <div class="imgContainer"></div>
+        </div>
+        <div class="right">
+            <div class="textContainer">
+                <h3 class="titleCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</h3>
+                <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                <div class="bottomContainer">
+                    <div class="containerDate">
+                        <p>Publié par Sophie Morrel le 21/04/2024</p>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerCard">
+        <div class="left">
+            <div class="imgContainer"></div>
+        </div>
+        <div class="right">
+            <div class="textContainer">
+                <h3 class="titleCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</h3>
+                <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                <div class="bottomContainer">
+                    <div class="containerDate">
+                        <p>Publié par Sophie Morrel le 21/04/2024</p>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerCard">
+        <div class="left">
+            <div class="imgContainer"></div>
+        </div>
+        <div class="right">
+            <div class="textContainer">
+                <h3 class="titleCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</h3>
+                <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                <div class="bottomContainer">
+                    <div class="containerDate">
+                        <p>Publié par Sophie Morrel le 21/04/2024</p>
+                    </div>
+                    <div class="btnContainer">
+                        <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

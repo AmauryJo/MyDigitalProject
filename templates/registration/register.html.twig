@@ -1,14 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
+<div class="containerInscription">
+    <h1>S'inscrire</h1>
     {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.mail) }}
+    <div class="formContainer">
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.mail, {
+            attr: {'class': 'mailInput'}
+        }) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
@@ -16,4 +32,7 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
+    </div>
+</div>
 {% endblock %}
+   

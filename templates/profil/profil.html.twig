@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <div class="containerProfil">
+        <div class="row">
+            <div class="left">
+                <div class="containerStatut allContainer">
+                    <h2 class="title">Mon statut</h2>
+                    <div class="statut">
+                        <select name="statut" id="statut" class="select">
+                            <option value="actif">Actif</option>
+                            <option value="pas_actif">Pas Actif</option>
+                        </select>
+                    </div>
+                    <p class="description">Faites savoir aux recruteurs s'ils peuvent vous contacter.</p>
+                </div>
+                <div class="containerSuivi allContainer">
+                    <h2 class="title">Suivi candidature</h2>
+                    <p class="description">Suivre en direct vos candidatures déjà envoyé.</p>
+                    <button class="btnSuivi">Voir mes candidatures</button>
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="infoPerso">
+                    <div class="containerTop">
+                        <h2 class="title">Informations personnelles</h2>
+                        <div class="statutCompletion">
+                            Presque complet
+                        </div>
+                    </div>
+                    <p class="description">Permettez aux recruteurs de vous contacter.</p>
+                    <div class="containerForm">
+                        <div>
+                            <label for="nom" class="labelForm">Nom</label>
+                            <input type="text" id="nom" name="nom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.nom is defined ? app.user.nom|title : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="prenom" class="labelForm">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.prenom is defined ? app.user.prenom|title : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="email" class="labelForm">Email</label>
+                            <input type="text" id="email" name="email" class="inputForm" placeholder="Non renseigné" value="{{ app.user.mail is defined ? app.user.mail : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="tel" class="labelForm">Téléphone</label>
+                            <input type="text" id="tel" name="tel" class="inputForm" placeholder="Non renseigné" value="{{ app.user.telephone is defined ? app.user.telephone : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="dateNaissance" class="labelForm">Date de naissance</label>
+                            <input type="date" id="dateNaissance" name="dateNaissance" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="ville" class="labelForm">Ville</label>
+                            <input type="text" id="ville" name="ville" class="inputForm" placeholder="Non renseigné" value="{{ app.user.ville is defined ? app.user.ville : '' }}">
+                        </div>
+                        <div>
+                            <label for="genre" class="labelForm">Genre</label>
+                            <input type="text" id="genre" name="genre" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <button class="btnModifier">Modifier le profil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="left">
+                <div class="containerimg">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="searchedJob">
+                    <div class="containerTop">
+                        <h2 class="title">Job recherché</h2>
+                        <div class="statutCompletion">
+                            A compléter
+                        </div>
+                    </div>
+                    <p class="description">Dites-en plus aux recruteurs sur le job que vous recherchez.</p>
+                    <div class="containerForm">
+                        <div>
+                            <label for="intitulePoste" class="labelForm">Intitulé de poste</label>
+                            <input type="text" id="intitulePoste" name="intitulePoste" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="localisation" class="labelForm">Localisation</label>
+                            <input type="text" id="localisation" name="localisation" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="typeContrat" class="labelForm">Type de contrat</label>
+                            <input type="text" id="typeContrat" name="typeContrat" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="teletravail" class="labelForm">Télétravail</label>
+                            <input type="text" id="teletravail" name="teletravail" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="niveauExperience" class="labelForm">Niveau d'expérience</label>
+                            <input type="text" id="niveauExperience" name="niveauExperience" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="description" class="labelForm">Exprimez librement ce que vous cherchez</label>
+                            <input type="text" id="description" name="description" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <button class="btnModifier">Modifier le profil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="left">
+                <div class="containerimg">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="containerTop">
+                    <h2 class="title">Expériences</h2>
+                    <div class="statutCompletion">
+                        A compléter
+                    </div>
+                </div>
+                <p class="description">Parlez-nous de vos expériences passées et actuelles, de vos projets</p>
+                <button class="btnAjouter">Ajouter</button>
+            </div>
+        </div>
+        <div class="row4">
+            <div class="left">
+                <div class="containerimg">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="containerTop">
+                    <h2 class="title">Compétences & expertises</h2>
+                    <div class="statutCompletion toComplete">
+                        A compléter
+                    </div>
+                </div>
+                <p class="description">Parlez-nous de vos expériences passées et actuelles, de vos projets</p>
+                <button class="btnAjouter">Ajouter</button>
+            </div>
+        </div>
+        <div class="row5">
+            <div class="left">
+                <div class="containerimg">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="containerTop">
+                    <h2 class="title">Diplômes & formations</h2>
+                    <div class="statutCompletion toComplete">
+                        A compléter
+                    </div>
+                </div>
+                <p class="description">Listez vos diplômes, formations et certifications pertinents.</p>
+                <button class="btnAjouter">Ajouter</button>
+            </div>
+        </div>
+        <div class="row6">
+            <div class="left">
+                <div class="containerimg">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="containerTop">
+                    <h2 class="title">Autres ressources</h2>
+                    <div class="statutCompletion toComplete">
+                        A compléter
+                    </div>
+                </div>
+                <p class="description">AJoutez des fichiers et des liens pour soutenir et accéleré vos candidatures</p>
+                <form action="" method="post">
+                    <div class="containerForm">
+                        <div>
+                            <label for="intitulePoste" class="labelForm">CV</label>
+                            <input type="text" id="intitulePoste" name="intitulePoste" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="localisation" class="labelForm">LinkedIn</label>
+                            <input type="text" id="localisation" name="localisation" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <div>
+                            <label for="typeContrat" class="labelForm">Site internet</label>
+                            <input type="text" id="typeContrat" name="typeContrat" class="inputForm" placeholder="Non renseigné">
+                        </div>
+                        <button class="btnAjouter">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -39,7 +39,11 @@
             <button class="btnAccesibility"><img src="{{ asset('img/accessibilityBtn.svg') }}" alt="Bouton accessibilité"></button>
         </div>
             {% block body %}{% endblock %}
-
+        {% if app.request.pathinfo != '/home' %}
+            <div class="pathContainer">
+                <a href="/home" class="pathText">Accueil ></a><strong>{{ app.request.pathinfo | split('/')[1] | capitalize }}</strong></p>
+            </div>
+        {% endif %}
         <footer>
             <div class="containerFooter">
                 <div class="leftFooter">

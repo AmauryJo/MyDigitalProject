@@ -188,3 +188,16 @@ footer{
 .paddingLeft{
     padding-left: 80px;
 }
+
+.pathContainer{
+    padding: 2% 5%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .pathText{
+        color: black;
+        text-decoration: none;
+    }
+}
+

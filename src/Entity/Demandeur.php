@@ -37,7 +37,8 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     #[Assert\Regex(
         pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
-        message: 'Le mot de passe doit contenir au moins 8 caractères, inclure une majuscule, une minuscule, un chiffre et un caractère spécial.'
+        message: 'Le mot de passe doit contenir au moins 8 caractères, inclure une majuscule, une minuscule, un chiffre et un caractère spécial.',
+        groups: ['PasswordUpdate']
     )]
     private ?string $password = null;
 
@@ -81,6 +82,42 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?bool $mailVerified = null;
+
+    #[ORM\Column(length: 6, nullable: true)]
+    private ?string $genre = null;
+
+    #[ORM\Column(type: "date", nullable: true)]
+    private ?\DateTimeInterface $dateDeNaissance = null;
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $experience = null;
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $diplomes = null;
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $competences = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $intitulePoste = null; 
+
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $localisationJob = null;    
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $typeContrat = null;    
+
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $teletravail = null;    
+
+    #[ORM\Column(length: 15, nullable: true)]
+    private ?string $nivExperience = null;    
+
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $detailJob = null;
+
+    #[ORM\Column(type: "boolean", nullable: true)]
+    private ?bool $actif = null;
 
     #[ORM\OneToOne(mappedBy: 'demandeur', cascade: ['persist', 'remove'])]
     private ?Cv $cv = null;
@@ -273,5 +310,137 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials() : void
     {
         // Effacez les informations sensibles si nécessaire
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?string $genre): self
+    {
+        $this->genre = $genre;
+        return $this;
+    }
+
+    public function getDateDeNaissance(): ?\DateTimeInterface
+    {
+        return $this->dateDeNaissance;
+    }
+
+    public function setDateDeNaissance(?\DateTimeInterface $dateDeNaissance): self
+    {
+        $this->dateDeNaissance = $dateDeNaissance;
+        return $this;
+    }
+
+    public function getExperience(): ?string
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(?string $experience): self
+    {
+        $this->experience = $experience;
+        return $this;
+    }
+
+    public function getDiplomes(): ?string
+    {
+        return $this->diplomes;
+    }
+
+    public function setDiplomes(?string $diplomes): self
+    {
+        $this->diplomes = $diplomes;
+        return $this;
+    }
+
+    public function getCompetences(): ?string
+    {
+        return $this->competences;
+    }
+
+    public function setCompetences(?string $competences): self
+    {
+        $this->competences = $competences;
+        return $this;
+    }
+
+    public function getIntitulePoste(): ?string
+    {
+        return $this->intitulePoste;
+    }
+    
+    public function setIntitulePoste(?string $intitulePoste): self
+    {
+        $this->intitulePoste = $intitulePoste;
+        return $this;
+    }
+
+    public function getLocalisationJob(): ?string
+    {
+        return $this->localisationJob;
+    }
+    
+    public function setLocalisationJob(?string $localisationJob): self
+    {
+        $this->localisationJob = $localisationJob;
+        return $this;
+    }
+
+    public function getTypeContrat(): ?string
+    {
+        return $this->typeContrat;
+    }
+    
+    public function setTypeContrat(?string $typeContrat): self
+    {
+        $this->typeContrat = $typeContrat;
+        return $this;
+    }
+    
+    public function getTeletravail(): ?string
+    {
+        return $this->teletravail;
+    }
+    
+    public function setTeletravail(?string $teletravail): self
+    {
+        $this->teletravail = $teletravail;
+        return $this;
+    }
+    
+    public function getNivExperience(): ?string
+    {
+        return $this->nivExperience;
+    }
+    
+    public function setNivExperience(?string $nivExperience): self
+    {
+        $this->nivExperience = $nivExperience;
+        return $this;
+    }
+    
+    public function getDetailJob(): ?string
+    {
+        return $this->detailJob;
+    }
+    
+    public function setDetailJob(?string $detailJob): self
+    {
+        $this->detailJob = $detailJob;
+        return $this;
+    }
+
+    public function isActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $actif): self
+    {
+        $this->actif = $actif;
+        return $this;
     }
 }

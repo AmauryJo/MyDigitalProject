@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 404{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/404.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="Container404">
+    <h1>ERREUR 404 NOT FOUND</h1>
+    <p>Vous allez être redirigé dans quelque instant ...</p>
+</div>
+<script>
+setTimeout(function() {
+    window.location.href = '/home';
+}, 5000);
+
+</script>
+{% endblock %}

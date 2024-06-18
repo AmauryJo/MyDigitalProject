@@ -24,7 +24,9 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_home');
         }
         $user = new Demandeur();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user, [
+            'validation_groups' => ['PasswordUpdate'],
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -16,12 +16,14 @@
         <nav>
             <div class="containerNav">
                 <ul class="navbar">
-                    <li><a class="linkNav" href="/home"><img src="{{ asset('img/MDM.svg') }}"></a></li>
+                    <li><a class="linkNav" href="/home"><img src="{{ asset('img/MDM.svg') }}" alt="Logo MDM Emploi"></a></li>
                     <li><a class="linkNav" href="/home">Accueil</a></li>
                     <li><a class="linkNav" href="/blog">Blog</a></li>
                     <li><a class="linkNav" href="/contact">Assistance</a></li>
-                    <li><a class="linkNav" href="/recruteur">Accès recruteur</a></li>
-                    <img src="{{ asset('img/navSeparator.svg') }}">
+                    {% if not app.user %}
+                        <li><a class="linkNav" href="/recruteur">Accès recruteur</a></li>
+                    {% endif %}
+                    <img src="{{ asset('img/navSeparator.svg') }}" alt="Trait de séparation">
                     {% if app.user %}
                         <li><a class="linkNav" href="/profil">Mon Compte</a></li>
                         <li><a href="{{ path('app_logout') }}">Logout</a></li>

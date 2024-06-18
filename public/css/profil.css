@@ -1,3 +1,42 @@
+textarea{
+    width: 70%;
+    max-width: 80%;
+    height: 150px;
+    max-height: 200px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 2%;
+    resize: none;
+}
+
+.select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: #000;
+    position: relative;
+    width: 80%; /* Ajustez la largeur selon vos besoins */
+}
+
+.selectForm {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: #000;
+    position: relative;
+    width: 20%; /* Ajustez la largeur selon vos besoins */
+    text-align: center ;
+}
+
 .containerProfil{
     margin-top: 5%;
     padding: 8%;
@@ -26,9 +65,23 @@
             justify-content: space-between;
 
             .statutCompletion{
+                padding: 3px 10px;
+
+            }
+
+            .toComplete{
                 background-color: antiquewhite;
                 border: 1px solid red;
-                padding: 3px 10px;
+            }
+
+            .complete{
+                background-color: #35C89F;
+                border: 1px solid #35C89F;
+            }
+
+            .nearComplete{
+                background-color: #ff9e3c;
+                border: 1px solid #ff9e3c;
             }
         }
 
@@ -61,45 +114,6 @@
                     color: white;
                     font-size: 16px;
                 }
-
-                .select {
-                    appearance: none;
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    background-color: white;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    padding: 10px 40px 10px 20px;
-                    font-size: 16px;
-                    color: #000;
-                    position: relative;
-                    width: 80%; /* Ajustez la largeur selon vos besoins */
-                }
-
-                .custom-select::before {
-                    content: '•';
-                    color: #6FCF97; /* Couleur du point */
-                    position: absolute;
-                    left: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-size: 24px;
-                }
-
-                .custom-select::after {
-                    content: '▼';
-                    font-size: 12px;
-                    color: #000;
-                    position: absolute;
-                    right: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    pointer-events: none;
-                }
-
-                .custom-select option {
-                    padding: 10px;
-                }
             }
 
         }
@@ -125,13 +139,17 @@
                 div{
                     padding-right: 15%;
                     display: flex;
-                    justify-content: space-between;
                     margin-bottom: 2%;
 
                     .inputForm{
+                        background-color: white;
+                        padding: 10px 20px;
                         border: none;
-                        padding: 10px;
-                        border-radius: 10px;
+
+                    }
+
+                    .labelForm{
+                        width: 80%;
                     }
                 }
             }
@@ -145,3 +163,51 @@
     }
 }
 
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    user-select: none;
+}
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='2' d='M6 9l6 6 6-6'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.custom-select-form {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='2' d='M6 9l6 6 6-6'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+.customForm{
+    width: 85%;
+}
+
+.custom-select option {
+    padding: 10px;
+}

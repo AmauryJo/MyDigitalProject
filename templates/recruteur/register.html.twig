@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription Entreprise{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="containerInscription">
+    <h1 class="greenTitle">Inscrire une Entreprise</h1>
+    <p>Déjà un compte ? <a href="/recruteur/login"><span class="greenTitle">Connectez-vous</span></a></p>
+    <div class="formContainer">
+        {{ form_start(form) }}
+
+        <div>
+            <p>Nom de l'entreprise</p>
+            {{ form_row(form.entr_nom, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': "Nom de l'entreprise"}
+            }) }}
+        </div>
+        <div>
+            <p>Adresse mail</p>
+            {{ form_row(form.entr_mail, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Adresse mail'}
+            }) }}
+        </div>
+        <div>
+            <p>Mot de passe</p>
+            {{ form_row(form.entr_password, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Mot de passe'}
+            }) }}
+        </div>
+        <div>
+            <p>Téléphone</p>
+            {{ form_row(form.entr_tel, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Téléphone'}
+            }) }}
+        </div>
+        <div>
+            <p>Secteur d'activité</p>
+            {{ form_row(form.entr_secteurActivite, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': "Secteur d'activité"}
+            }) }}
+        </div>
+        <div>
+            <p>Nombre d'employés</p>
+            {{ form_row(form.entr_nombreEmploye, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': "Nombre d'employés"}
+            }) }}
+        </div>
+        <div>
+            <p>Offre d'emploi associée</p>
+            {{ form_row(form.entreprise, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': "Offre d'emploi associée"}
+            }) }}
+        </div>
+
+        {{ form_errors(form) }}
+
+        <div class="btnContainer">
+            <button type="submit" class="btnSubmit">S'inscrire</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

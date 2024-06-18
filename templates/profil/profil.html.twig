@@ -2,6 +2,9 @@
 
 {% block title %}Profil{% endblock %}
 
+{% set allValuesNull = app.user.intitulePoste is empty and app.user.localisationJob is empty and app.user.typeContrat is empty and app.user.teletravail is empty and app.user.nivExperience is empty and app.user.detailJob is empty %}
+{% set allValuesFilled = app.user.intitulePoste is not empty and app.user.localisationJob is not empty and app.user.typeContrat is not empty and app.user.teletravail is not empty and app.user.nivExperience is not empty and app.user.detailJob is not empty %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
@@ -21,10 +24,10 @@
                 <div class="containerStatut allContainer">
                     <h2 class="title">Mon statut</h2>
                     <div class="statut">
-                        <select name="statut" id="statut" class="select">
-                            <option value="actif">Actif</option>
-                            <option value="pas_actif">Pas Actif</option>
-                        </select>
+                    {{ form_start(formIsActif) }}
+                        {{ form_widget(formIsActif) }}
+                        <button type="submit" class="btn btn-success" style="display:none;">Sauvegarder</button>
+                    {{ form_end(formIsActif) }}
                     </div>
                     <p class="description">Faites savoir aux recruteurs s'ils peuvent vous contacter.</p>
                 </div>
@@ -38,7 +41,7 @@
                 <div class="infoPerso">
                     <div class="containerTop">
                         <h2 class="title">Informations personnelles</h2>
-                        <div class="statutCompletion">
+                        <div class="statutCompletion nearComplete">
                             Presque complet
                         </div>
                     </div>
@@ -61,16 +64,16 @@
                             <input type="text" id="tel" name="tel" class="inputForm" placeholder="Non renseigné" value="{{ app.user.telephone is defined ? app.user.telephone : '' }}" disabled>
                         </div>
                         <div>
-                            <label for="dateNaissance" class="labelForm">Date de naissance</label>
-                            <input type="date" id="dateNaissance" name="dateNaissance" class="inputForm" placeholder="Non renseigné">
-                        </div>
-                        <div>
                             <label for="ville" class="labelForm">Ville</label>
                             <input type="text" id="ville" name="ville" class="inputForm" placeholder="Non renseigné" value="{{ app.user.ville is defined ? app.user.ville : '' }}">
                         </div>
                         <div>
-                            <label for="genre" class="labelForm">Genre</label>
-                            <input type="text" id="genre" name="genre" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formPersonnelle.date_de_naissance, 'Date de naissance', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formPersonnelle.date_de_naissance, {'attr': {'class': 'form-control', 'placeholder': 'Non renseigné'}}) }}
+                        </div>
+                        <div>
+                            {{ form_label(formPersonnelle.genre, 'Genre', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formPersonnelle.genre, {'attr': {'class': 'custom-select-form', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <button class="btnModifier">Modifier le profil</button>
                     </div>
@@ -80,44 +83,61 @@
         <div class="row2">
             <div class="left">
                 <div class="containerimg">
-                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
                 </div>
             </div>
             <div class="right allContainer">
                 <div class="searchedJob">
                     <div class="containerTop">
                         <h2 class="title">Job recherché</h2>
-                        <div class="statutCompletion">
-                            A compléter
+                        <div class="statutCompletion 
+                            {% if allValuesFilled %}
+                                complete
+                            {% elseif allValuesNull %}
+                                toComplete
+                            {% else %}
+                                nearComplete
+                            {% endif %}">
+                            {% if allValuesFilled %}
+                                Complété
+                            {% elseif allValuesNull %}
+                                A compléter
+                            {% else %}
+                                Presque complet
+                            {% endif %}
                         </div>
                     </div>
                     <p class="description">Dites-en plus aux recruteurs sur le job que vous recherchez.</p>
                     <div class="containerForm">
+                        {{ form_start(formJobDetails, {'attr': {'class': 'formJobDetails'}}) }}
+                        
                         <div>
-                            <label for="intitulePoste" class="labelForm">Intitulé de poste</label>
-                            <input type="text" id="intitulePoste" name="intitulePoste" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.intitulePoste, 'Intitulé de poste', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.intitulePoste, {'attr': {'class': 'inputForm', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <div>
-                            <label for="localisation" class="labelForm">Localisation</label>
-                            <input type="text" id="localisation" name="localisation" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.localisationJob, 'Localisation', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.localisationJob, {'attr': {'class': 'inputForm', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <div>
-                            <label for="typeContrat" class="labelForm">Type de contrat</label>
-                            <input type="text" id="typeContrat" name="typeContrat" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.typeContrat, 'Type de contrat', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.typeContrat, {'attr': {'class': 'custom-select-form', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <div>
-                            <label for="teletravail" class="labelForm">Télétravail</label>
-                            <input type="text" id="teletravail" name="teletravail" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.teletravail, 'Télétravail', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.teletravail, {'attr': {'class': 'custom-select-form', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <div>
-                            <label for="niveauExperience" class="labelForm">Niveau d'expérience</label>
-                            <input type="text" id="niveauExperience" name="niveauExperience" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.nivExperience, 'Niveau d\'expérience', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.nivExperience, {'attr': {'class': 'custom-select-form', 'placeholder': 'Non renseigné'}}) }}
                         </div>
                         <div>
-                            <label for="description" class="labelForm">Exprimez librement ce que vous cherchez</label>
-                            <input type="text" id="description" name="description" class="inputForm" placeholder="Non renseigné">
+                            {{ form_label(formJobDetails.detailJob, 'Exprimez librement ce que vous cherchez', {'label_attr': {'class': 'labelForm'}}) }}
+                            {{ form_widget(formJobDetails.detailJob, {'attr': {'class': 'textareaForm', 'placeholder': 'Non renseigné'}}) }}
                         </div>
-                        <button class="btnModifier">Modifier le profil</button>
+                        
+                        <button type="submit" class="btnModifier">Modifier le profil</button>
+                        {{ form_end(formJobDetails) }}
                     </div>
                 </div>
             </div>
@@ -125,58 +145,67 @@
         <div class="row3">
             <div class="left">
                 <div class="containerimg">
-                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
                 </div>
             </div>
             <div class="right allContainer">
                 <div class="containerTop">
                     <h2 class="title">Expériences</h2>
-                    <div class="statutCompletion">
-                        A compléter
+                    <div class="statutCompletion {{ app.user.experience ? 'complete' : 'toComplete' }}">
+                        {{ app.user.experience ? 'Complété' : 'A compléter' }}
                     </div>
                 </div>
                 <p class="description">Parlez-nous de vos expériences passées et actuelles, de vos projets</p>
-                <button class="btnAjouter">Ajouter</button>
+                {{ form_start(formExperiences) }}
+                {{ form_widget(formExperiences) }}
+                <button type="submit" class="btnAjouter">Ajouter</button>
+                {{ form_end(formExperiences) }}
             </div>
         </div>
         <div class="row4">
             <div class="left">
                 <div class="containerimg">
-                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
                 </div>
             </div>
             <div class="right allContainer">
                 <div class="containerTop">
                     <h2 class="title">Compétences & expertises</h2>
-                    <div class="statutCompletion toComplete">
-                        A compléter
+                    <div class="statutCompletion {{ app.user.competences ? 'complete' : 'toComplete' }}">
+                        {{ app.user.competences ? 'Complété' : 'A compléter' }}
                     </div>
                 </div>
                 <p class="description">Parlez-nous de vos expériences passées et actuelles, de vos projets</p>
-                <button class="btnAjouter">Ajouter</button>
+                {{ form_start(formCompetences) }}
+                {{ form_widget(formCompetences) }}
+                <button type="submit" class="btnAjouter">Ajouter</button>
+                {{ form_end(formCompetences) }}
             </div>
         </div>
         <div class="row5">
             <div class="left">
                 <div class="containerimg">
-                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
                 </div>
             </div>
             <div class="right allContainer">
                 <div class="containerTop">
-                    <h2 class="title">Diplômes & formations</h2>
-                    <div class="statutCompletion toComplete">
-                        A compléter
+                    <h2 class="title">Diplômes &amp; formations</h2>
+                    <div class="statutCompletion {{ app.user.diplomes ? 'complete' : 'toComplete' }}">
+                        {{ app.user.diplomes ? 'Complété' : 'A compléter' }}
                     </div>
                 </div>
                 <p class="description">Listez vos diplômes, formations et certifications pertinents.</p>
-                <button class="btnAjouter">Ajouter</button>
+                {{ form_start(formDiplomes) }}
+                {{ form_widget(formDiplomes) }}
+                <button type="submit" class="btnAjouter">Ajouter</button>
+                {{ form_end(formDiplomes) }}
             </div>
         </div>
         <div class="row6">
             <div class="left">
                 <div class="containerimg">
-                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="photo de profil">
+                    <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
                 </div>
             </div>
             <div class="right allContainer">
@@ -208,4 +237,14 @@
         </div>
     </div>
 </form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectField = document.querySelector('#is_actif_actif');
+        selectField.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+</script>
 {% endblock %}

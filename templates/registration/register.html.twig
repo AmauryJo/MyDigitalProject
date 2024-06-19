@@ -16,7 +16,7 @@
 
 {% block body %}
 <div class="containerInscription">
-    <h1 class="greenTitle">S'inscrire !</h1>
+    <h1 class="greenTitle">S'inscrire en tant que chercheur d'emploi !</h1>
     <p>Déjà un compte ? <a href="/login"><span class="greenTitle">Connectez-vous</span></a></p>
     <div class="formContainer">
         {{ form_start(registrationForm) }}
@@ -84,7 +84,7 @@
             <p>Rue</p>
             {{ form_row(registrationForm.rue, {
                 'label': false,
-                'attr': {'class': 'inputForm', 'placeholder': 'Rue'}
+                'attr': {'class': 'inputForm', 'placeholder': 'Nom de la rue'}
             }) }}
         </div>
         <div style="display: flex; align-items: center;">

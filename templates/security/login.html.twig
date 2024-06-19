@@ -23,12 +23,13 @@
                 {% endfor %}
             </div>
         {% endfor %}
-        <h1 class="greenTitle">Connexion !</h1>
+        <h1 class="greenTitle">Se connecter en tant que chercheur d'emploi !</h1>
         <p>Pas encore de compte ? <a href="/register"><span class="greenTitle">Inscrivez-vous</span></a></p>
+        <p>Vous êtes une entreprise ? <a href="/recruteur/connexion"><span class="greenTitle">Allez ici !</span></a></p>
         <div class="formContainer">
-            <p class="inputTitle">Mail</p>
+            <p class="inputTitle">Adresse email</p>
             <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control inputForm" autocomplete="username" required autofocus>
-            <p class="inputTitle">Password</p>
+            <p class="inputTitle">Mot de passe</p>
             <input type="password" name="password" id="inputPassword" class="form-control inputForm" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

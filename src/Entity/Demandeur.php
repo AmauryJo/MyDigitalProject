@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: DemandeurRepository::class)]
-#[UniqueEntity(fields: ['mail'], message: 'There is already an account with this mail')]
+#[UniqueEntity(fields: ['mail'], message: 'Il existe déjà un compte avec cette adresse mail.')]
 class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -118,6 +118,12 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: "boolean", nullable: true)]
     private ?bool $actif = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $linkedinProfile = null;    
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $website = null;    
 
     #[ORM\OneToOne(mappedBy: 'demandeur', cascade: ['persist', 'remove'])]
     private ?Cv $cv = null;
@@ -441,6 +447,30 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setActif(?bool $actif): self
     {
         $this->actif = $actif;
+        return $this;
+    }
+
+    public function getLinkedinProfile(): ?string
+    {
+        return $this->linkedinProfile;
+    }
+
+    public function setLinkedinProfile(?string $linkedinProfile): self
+    {
+        $this->linkedinProfile = $linkedinProfile;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): self
+    {
+        $this->website = $website;
+
         return $this;
     }
 }

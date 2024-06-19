@@ -11,13 +11,6 @@
 {% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
     <div class="containerProfil">
         <div class="row">
             <div class="left">
@@ -80,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="row2">
+        <div class="row2"> 
             <div class="left">
                 <div class="containerimg">
                     <img src="{{ asset('img/profil/profilSVG.svg') }}" alt="Design de décoration">
@@ -211,40 +204,65 @@
             <div class="right allContainer">
                 <div class="containerTop">
                     <h2 class="title">Autres ressources</h2>
-                    <div class="statutCompletion toComplete">
-                        A compléter
+                    <div class="statutCompletion 
+                        {% if demandeur.cv is not null and demandeur.website is not null and demandeur.linkedinProfile is not null %}
+                            complete
+                        {% elseif demandeur.cv is null and (demandeur.website is null or demandeur.cv.website == '') and (demandeur.linkedinProfile is null or demandeur.linkedinProfile == '') %}
+                            toComplete
+                        {% else %}
+                            nearComplete
+                        {% endif %}">
+                        {% if demandeur.cv is not null and demandeur.website is not null and demandeur.linkedinProfile is not null %}
+                            Complété
+                        {% elseif demandeur.cv is null and (demandeur.website is null or demandeur.website == '') and (demandeur.linkedinProfile is null or demandeur.linkedinProfile == '') %}
+                            A compléter
+                        {% else %}
+                            Presque complet
+                        {% endif %}
                     </div>
                 </div>
                 <p class="description">AJoutez des fichiers et des liens pour soutenir et accéleré vos candidatures</p>
-                <form action="" method="post">
-                    <div class="containerForm">
-                        <div>
-                            <label for="intitulePoste" class="labelForm">CV</label>
-                            <input type="text" id="intitulePoste" name="intitulePoste" class="inputForm" placeholder="Non renseigné">
+                <div class="containerForm">
+                    {{ form_start(formCvDemandeur) }}
+
+                    {% if demandeur.cv is not null %}
+                        <div style="align-items: center;">
+                            <p style="width: 80%; ">Votre CV actuel : </p>
+                            <a style="padding-left: 20px;" href="{{ asset('uploads/cvs/' ~ demandeur.cv.chemin) }}" target="_blank">Actuel</a>
+                            <label for="cv_demandeur_cvFile" class="labelChange">Changer<img class="svgUpload" src="{{ asset('img/profil/upload.svg') }}" alt="Changer de CV"></label>
+                            {{ form_widget(formCvDemandeur.cvFile, {'attr': {'class': 'fileInput'}}) }}
                         </div>
+                    {% else %}
                         <div>
-                            <label for="localisation" class="labelForm">LinkedIn</label>
-                            <input type="text" id="localisation" name="localisation" class="inputForm" placeholder="Non renseigné">
+                            <label for="cvFile" class="labelForm">CV</label>
+                            {{ form_widget(formCvDemandeur.cvFile, {'attr': {'class': 'fileInput'}}) }}
                         </div>
-                        <div>
-                            <label for="typeContrat" class="labelForm">Site internet</label>
-                            <input type="text" id="typeContrat" name="typeContrat" class="inputForm" placeholder="Non renseigné">
-                        </div>
-                        <button class="btnAjouter">Ajouter</button>
+                    {% endif %}
+
+
+                    <div>
+                        <label for="linkedinProfile" class="labelForm">LinkedIn</label>
+                        {{ form_widget(formCvDemandeur.linkedinProfile, {'attr': {'class': 'inputForm', 'placeholder': 'Non renseigné'}}) }}
                     </div>
-                </form>
+
+                    <div>
+                        <label for="website" class="labelForm">Site internet</label>
+                        {{ form_widget(formCvDemandeur.website, {'attr': {'class': 'inputForm', 'placeholder': 'Non renseigné'}}) }}
+                    </div>
+
+                    <button class="btnAjouter">Ajouter</button>
+                    
+                    {{ form_end(formCvDemandeur) }}
             </div>
         </div>
     </div>
-</form>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectField = document.querySelector('#is_actif_actif');
-        selectField.addEventListener('change', function() {
-            this.form.submit();
+    <script>
+    // Code javascript pour changer une valeur en BDD sans forcer l'utilisateur à cliquer sur un bouton submit
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectField = document.querySelector('#is_actif_actif');
+            selectField.addEventListener('change', function() {
+                this.form.submit();
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}

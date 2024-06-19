@@ -11,17 +11,17 @@
 <form method="post">
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
     {% endif %}
 
     <div class="containerLogin">
         <h1 class="greenTitle">Connexion !</h1>
-        <p>Pas encore de compte ? <a href="/register"><span class="greenTitle">Inscrivez-vous</span></a></p>
+        <p>Pas encore de compte ? <a href="{{ path('recruteur_inscription') }}"><span class="greenTitle">Inscrivez-vous</span></a></p>
         <div class="formContainer">
-            <p class="inputTitle">Mail</p>
-            <input type="text" value="{{ last_username | default('') }}" name="mail" id="inputMail" class="form-control inputForm" autocomplete="username" required autofocus>
-            <p class="inputTitle">Password</p>
+            <p class="inputTitle">Email</p>
+            <input type="text" value="{{ last_username | default('') }}" name="email" id="inputEmail" class="form-control inputForm" autocomplete="username" required autofocus>
+            <p class="inputTitle">Mot de passe</p>
             <input type="password" name="password" id="inputPassword" class="form-control inputForm" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

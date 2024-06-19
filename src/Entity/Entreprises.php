@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\EntreprisesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: EntreprisesRepository::class)]
-class Entreprises
+class Entreprises implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -44,7 +45,7 @@ class Entreprises
         return $this->entr_password;
     }
 
-    public function setEntrPassword(string $entr_password): static
+    public function setEntrPassword(string $entr_password): self
     {
         $this->entr_password = $entr_password;
 
@@ -56,7 +57,7 @@ class Entreprises
         return $this->entr_tel;
     }
 
-    public function setEntrTel(int $entr_tel): static
+    public function setEntrTel(int $entr_tel): self
     {
         $this->entr_tel = $entr_tel;
 
@@ -68,7 +69,7 @@ class Entreprises
         return $this->entr_mail;
     }
 
-    public function setEntrMail(string $entr_mail): static
+    public function setEntrMail(string $entr_mail): self
     {
         $this->entr_mail = $entr_mail;
 
@@ -80,7 +81,7 @@ class Entreprises
         return $this->entr_nom;
     }
 
-    public function setEntrNom(string $entr_nom): static
+    public function setEntrNom(string $entr_nom): self
     {
         $this->entr_nom = $entr_nom;
 
@@ -92,7 +93,7 @@ class Entreprises
         return $this->entr_secteurActivite;
     }
 
-    public function setEntrSecteurActivite(string $entr_secteurActivite): static
+    public function setEntrSecteurActivite(string $entr_secteurActivite): self
     {
         $this->entr_secteurActivite = $entr_secteurActivite;
 
@@ -104,7 +105,7 @@ class Entreprises
         return $this->entr_nombreEmploye;
     }
 
-    public function setEntrNombreEmploye(string $entr_nombreEmploye): static
+    public function setEntrNombreEmploye(string $entr_nombreEmploye): self
     {
         $this->entr_nombreEmploye = $entr_nombreEmploye;
 
@@ -126,5 +127,16 @@ class Entreprises
         $this->entreprise = $entreprise;
 
         return $this;
+    }
+
+    // Implémentation de l'interface PasswordAuthenticatedUserInterface
+    public function getPassword(): ?string
+    {
+        return $this->entr_password;
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_ENTREPRISE'];
     }
 }

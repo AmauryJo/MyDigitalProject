@@ -20,21 +20,27 @@
                     <li><a class="linkNav" href="/home">Accueil</a></li>
                     <li><a class="linkNav" href="/blog">Blog</a></li>
                     <li><a class="linkNav" href="/contact">Assistance</a></li>
+
                     {% if not app.user %}
-                        <li><a class="linkNav" href="/recruteur">Accès recruteur</a></li>
+                        <li><a class="linkNav" href="/recruteur/inscription">Accès recruteur</a></li>
                     {% endif %}
+
                     <img src="{{ asset('img/navSeparator.svg') }}" alt="Trait de séparation">
+
                     {% if app.user %}
-                        <li><a class="linkNav" href="/profil">Mon Compte</a></li>
+                        {% if is_granted('ROLE_DEMANDEUR') %}
+                            <li><a class="linkNav" href="/demandeur/profil">Mon Compte Demandeur</a></li>
+                        {% elseif is_granted('ROLE_ENTREPRISE') %}
+                            <li><a class="linkNav" href="/entreprise/profil">Mon Compte Entreprise</a></li>
+                        {% endif %}
                         <li><a href="{{ path('app_logout') }}">Logout</a></li>
                     {% else %}
                         <li><a class="linkNav" href="/login">Login</a></li>
                     {% endif %}
 
                     <li><a class="linkNav btnCtaNav" href="/register">Trouver un job</a></li>
-                </ul>      
+                </ul>
             </div>
-
         </nav>
         
         <div class="containerAccesibility">

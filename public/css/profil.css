@@ -75,8 +75,8 @@ textarea{
             }
 
             .complete{
-                background-color: #35C89F;
-                border: 1px solid #35C89F;
+                background-color: #4855A1;
+                border: 1px solid #4855A1;
             }
 
             .nearComplete{
@@ -107,7 +107,7 @@ textarea{
                 }
 
                 .btnSuivi{
-                    background-color: #35C89F;
+                    background-color: #4855A1;
                     border: none;
                     border-radius: 25px;
                     padding: 15px 20px;
@@ -121,14 +121,14 @@ textarea{
             width: 70%;
 
             .btnAjouter{
-                background-color: #35C89F;
+                background-color: #4855A1;
                 border: none;
                 border-radius: 25px;
                 padding: 15px 20px;
                 color: white;
             }
             .btnModifier{
-                background-color: #35C89F;
+                background-color: #4855A1;
                 border: none;
                 border-radius: 25px;
                 padding: 15px 20px;

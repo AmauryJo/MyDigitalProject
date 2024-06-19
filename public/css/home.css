@@ -106,7 +106,7 @@
 
 
 .statContainer{
-    background-color: #35C89F;
+    background-color: #4855A1;
     padding: 8%;
     padding-left: 5%;
     padding-right: 5%;
@@ -312,7 +312,7 @@
     padding: 8%;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: #0F382D;
+    background-color: #99A1D1;
 
     .containerMot{
         width: 60%;
@@ -324,7 +324,7 @@
         }
 
         .titrePolice{
-            color: #A2E6D3;
+            color: #28305F;
             font-family: 'GT-ALPINA';
         }
     }

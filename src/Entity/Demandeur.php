@@ -443,4 +443,5 @@ class Demandeur implements UserInterface, PasswordAuthenticatedUserInterface
         $this->actif = $actif;
         return $this;
     }
+
 }

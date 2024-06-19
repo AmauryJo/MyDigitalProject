@@ -7,7 +7,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/recruteur/register.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -17,8 +17,9 @@
 {% block body %}
 <div class="containerInscription">
     <h1 class="greenTitle">Inscrire une Entreprise</h1>
-    <p>Déjà un compte ? <a href="/recruteur/login"><span class="greenTitle">Connectez-vous</span></a></p>
+    <p>Déjà un compte ? <a href="/recruteur/connexion"><span class="greenTitle">Connectez-vous</span></a></p>
     <div class="formContainer">
+
         {{ form_start(form) }}
 
         <div>
@@ -53,25 +54,20 @@
             <p>Secteur d'activité</p>
             {{ form_row(form.entr_secteurActivite, {
                 'label': false,
-                'attr': {'class': 'inputForm', 'placeholder': "Secteur d'activité"}
+                'attr': {'class': 'selectForm', 'placeholder': "Secteur d'activité"}
             }) }}
         </div>
         <div>
             <p>Nombre d'employés</p>
             {{ form_row(form.entr_nombreEmploye, {
                 'label': false,
-                'attr': {'class': 'inputForm', 'placeholder': "Nombre d'employés"}
+                'attr': {'class': 'selectForm', 'placeholder': "Nombre d'employés"}
             }) }}
         </div>
-        <div>
-            <p>Offre d'emploi associée</p>
-            {{ form_row(form.entreprise, {
-                'label': false,
-                'attr': {'class': 'inputForm', 'placeholder': "Offre d'emploi associée"}
-            }) }}
-        </div>
-
         {{ form_errors(form) }}
+
+    <br>
+        <label for="">Accepter les <a href="" style="color: #4855A1">conditions générales d'utilisations</a></label><input type="checkbox" name="" id="" required>
 
         <div class="btnContainer">
             <button type="submit" class="btnSubmit">S'inscrire</button>

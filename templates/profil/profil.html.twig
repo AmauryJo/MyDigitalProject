@@ -34,8 +34,21 @@
                 <div class="infoPerso">
                     <div class="containerTop">
                         <h2 class="title">Informations personnelles</h2>
-                        <div class="statutCompletion nearComplete">
-                            Presque complet
+                        <div class="statutCompletion 
+                            {% if demandeur.nom is not null and demandeur.prenom is not null and demandeur.mail is not null and demandeur.telephone is not null and demandeur.ville is not null and demandeur.dateDeNaissance is not null and demandeur.genre is not null %}
+                                complete
+                            {% elseif demandeur.nom is null and demandeur.prenom is null and demandeur.mail is null and demandeur.telephone is null and demandeur.ville is null and demandeur.date_de_naissance is null and demandeur.genre is null %}
+                                toComplete
+                            {% else %}
+                                nearComplete
+                            {% endif %}">
+                            {% if demandeur.nom is not null and demandeur.prenom is not null and demandeur.mail is not null and demandeur.telephone is not null and demandeur.ville is not null and demandeur.dateDeNaissance is not null and demandeur.genre is not null %}
+                                Complété
+                            {% elseif demandeur.nom is null and demandeur.prenom is null and demandeur.mail is null and demandeur.telephone is null and demandeur.ville is null and demandeur.date_de_naissance is null and demandeur.genre is null %}
+                                A compléter
+                            {% else %}
+                                Presque complet
+                            {% endif %}
                         </div>
                     </div>
                     <p class="description">Permettez aux recruteurs de vous contacter.</p>

@@ -134,9 +134,4 @@ class Entreprises implements PasswordAuthenticatedUserInterface
     {
         return $this->entr_password;
     }
-
-    public function getRoles(): array
-    {
-        return ['ROLE_ENTREPRISE'];
-    }
 }

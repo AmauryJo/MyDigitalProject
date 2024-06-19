@@ -77,7 +77,7 @@
         .firstSection
         {
             height: 800px;
-            background-image: url('../../img/illustration1.png');
+            background-image: url('../../img/home/illustration1.png');
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
@@ -96,7 +96,7 @@
 
         .thirdSection{
             height: 600px;
-            background-image: url('../../img/illustration3.png');
+            background-image: url('../../img/home/illustration3.png');
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
@@ -485,7 +485,6 @@
 
         .right{
             width: 60%;
-            text-align: center;
 
             .accordion {
                 width: 100%;

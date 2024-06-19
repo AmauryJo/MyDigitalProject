@@ -102,6 +102,7 @@ h1{
                 width: 40%;
                 margin: auto;
                 margin-left: 0;
+                margin-right: O !important;
 
 
                 .inputRecherche{
@@ -120,6 +121,7 @@ h1{
                 margin: auto;
                 display: flex;
                 justify-content: center;
+                margin-left: 0;
 
                 .btnFiltre {
                     display: flex;
@@ -129,7 +131,7 @@ h1{
                     border: 1px solid black;
                     border-radius: 25px; 
                     width: 100px;
-                    height: 40px;
+                    height: 46px;
                 }
                 
                 .btnFiltre::after {

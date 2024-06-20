@@ -24,7 +24,7 @@
 
         <div>
             <p>Nom de l'entreprise</p>
-            {{ form_row(form.entr_nom, {
+            {{ form_row(form.nom, {
                 'label': false,
                 'attr': {'class': 'inputForm', 'placeholder': "Nom de l'entreprise"}
             }) }}
@@ -38,28 +38,28 @@
         </div>
         <div>
             <p>Mot de passe</p>
-            {{ form_row(form.entr_password, {
+            {{ form_row(form.password, {
                 'label': false,
                 'attr': {'class': 'inputForm', 'placeholder': 'Mot de passe'}
             }) }}
         </div>
         <div>
             <p>Téléphone</p>
-            {{ form_row(form.entr_tel, {
+            {{ form_row(form.telephone, {
                 'label': false,
                 'attr': {'class': 'inputForm', 'placeholder': 'Téléphone'}
             }) }}
         </div>
         <div>
             <p>Secteur d'activité</p>
-            {{ form_row(form.entr_secteurActivite, {
+            {{ form_row(form.secteur_activite, {
                 'label': false,
                 'attr': {'class': 'selectForm', 'placeholder': "Secteur d'activité"}
             }) }}
         </div>
         <div>
             <p>Nombre d'employés</p>
-            {{ form_row(form.entr_nombreEmploye, {
+            {{ form_row(form.nombre_employe, {
                 'label': false,
                 'attr': {'class': 'selectForm', 'placeholder': "Nombre d'employés"}
             }) }}

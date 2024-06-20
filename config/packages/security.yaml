@@ -1,8 +1,8 @@
 security:
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+    
     providers:
-        users_in_memory: { memory: null }
         demandeur_provider:
             entity:
                 class: App\Entity\Demandeur
@@ -12,43 +12,29 @@ security:
                 class: App\Entity\Entreprises
                 property: entr_mail
 
-
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        entreprises:
-            pattern: ^/recruteur
-            lazy: true
-            provider: entreprises_provider  # Utilisez ce fournisseur pour le pare-feu entreprises
-            custom_authenticator: App\Security\EntreprisesAuthenticator
-            logout:
-                path: app_logout
-                
-            remember_me:
-                secret: '%kernel.secret%'
-                lifetime: 604800
-                path: /
-                #always_remember_me: true
+
         main:
             lazy: true
-            provider: demandeur_provider  # Utilisez ce fournisseur pour le pare-feu main
-            custom_authenticator: App\Security\DemandeurAuthenticator
+            provider: demandeur_provider
+            custom_authenticator:
+                - App\Security\DemandeurAuthenticator
+                - App\Security\EntreprisesAuthenticator
+            entry_point: App\Security\DemandeurAuthenticator # Ou App\Security\EntreprisesAuthenticator selon votre besoin
             logout:
                 path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
-
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
-                #always_remember_me: true
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-        # - { path: ^/entreprises, roles: ROLE_ENTREPRISE }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/entreprises, roles: ROLE_ENTREPRISE }
 
 when@test:
     security:

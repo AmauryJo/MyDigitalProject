@@ -25,7 +25,7 @@ class OffreEmploi
 
     #[ORM\OneToOne(inversedBy: 'entreprise', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?entreprises $entreprise = null;
+    private ?Entreprises $entreprise = null;
 
     public function getId(): ?int
     {

@@ -19,7 +19,7 @@ class EntreprisesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('entr_password', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => true,
@@ -36,10 +36,10 @@ class EntreprisesType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('entr_tel')
             ->add('entr_mail')
-            ->add('entr_nom')
-            ->add('entr_secteurActivite', ChoiceType::class, [
+            ->add('nom')
+            ->add('telephone')
+            ->add('secteur_activite', ChoiceType::class, [
                 'choices' => [
                     'Agroalimentaire' => 'agroalimentaire',
                     'Banque / Assurance' => 'banque_assurance',
@@ -60,7 +60,7 @@ class EntreprisesType extends AbstractType
                     'Transports / Logistique' => 'transports_logistique'
                 ],
             ])            
-            ->add('entr_nombreEmploye', ChoiceType::class, [
+            ->add('nombre_employe', ChoiceType::class, [
                 'choices' => [
                     'Micro-entreprise' => 'micro',
                     'Petite entreprise' => 'petite',

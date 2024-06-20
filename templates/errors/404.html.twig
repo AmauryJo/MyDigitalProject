@@ -8,9 +8,19 @@
 {% endblock %}
 
 {% block body %}
-<div class="Container404">
-    <h1>ERREUR 404 NOT FOUND</h1>
-    <p>Vous allez être redirigé dans quelque instant ...</p>
+<div class="container404">
+    <div class="left">
+        <img src="{{ asset('img/404/dessin404.png') }}" alt="Design esthétique">
+    </div>
+    <div class="right">
+        <div class="containerImg">
+            <img src="{{ asset('img/404/404.svg') }}" alt="Erreur 404">
+        </div>
+        <p>Il semblerait que vous vous soyez perdu :(</p>
+        <div class="containerBtn">
+            <button>Retourner à l'accueil</button>
+        </div>
+    </div>
 </div>
 <script>
 setTimeout(function() {

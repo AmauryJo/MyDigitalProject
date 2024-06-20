@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Psr\Log\LoggerInterface;
+
 
 
 class EntreprisesController extends AbstractController
@@ -19,6 +21,10 @@ class EntreprisesController extends AbstractController
     #[Route('/recruteur/inscription', name: 'recruteur_inscription')]
     public function new(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
         $entreprise = new Entreprises();
         $form = $this->createForm(EntreprisesType::class, $entreprise);
 
@@ -46,17 +52,17 @@ class EntreprisesController extends AbstractController
     }
 
     #[Route('/recruteur/connexion', name: 'app_entreprises_connexion')]
-    public function connexion(Request $request, AuthenticationUtils $authenticationUtils): Response
+    public function connexion(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        $form = $this->createForm(EntreprisesLoginType::class, [
-            'email' => $lastUsername,
-        ]);
-
         return $this->render('recruteur/login.html.twig', [
-            'form' => $form->createView(),
+            'last_username' => $lastUsername,
             'error' => $error,
         ]);
     }

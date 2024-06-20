@@ -21,7 +21,7 @@ class EntreprisesAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_entreprises_connexion';
-    public const HOME_ROUTE = 'app_entreprises_success';
+    public const HOME_ROUTE = 'app_home';
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {

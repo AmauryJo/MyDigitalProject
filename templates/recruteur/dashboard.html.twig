@@ -1,0 +1,602 @@
+{% extends "baseRecruteur.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="left">
+        <div class="firstSection">
+            <div class="containerRecherche">
+                <h1 class="title">Dashboard !</h1>
+                <h2 class="subTitle">Postulez en ligne aux meilleures offres d'emploi handi-accessibles</h2>
+
+                <form action="" method="get">
+                    <div class="formContainer">
+                        <p>Quel poste ? <span class="spanTexte">Ou ?</span></p>
+                        <div class="inputContainner" style="width: 80%;">
+                            <input type="text" class="inputRecherche" placeholder="Ex : Comptable" name="" id="">
+                            <input type="text" class="inputRecherche" placeholder="Ville, département ou code postal" name="" id="">
+                            <input type="button" value="Rechercher" class="btnRechercher" style="margin-left: auto;">
+                        </div>
+                    </div>
+                </form>            
+            </div>
+        </div>
+
+        <div class="secondSection">
+            <div class="imgContainer">
+                <img src="{{ asset('img/home/illustration2.svg') }}" alt="">
+            </div>
+        </div>
+
+        <div class="thirdSection paddingLeft">
+            <div class="thirdSectionContainer">
+                <h1 class="title">Nous vous <span class="boldTitle">accompagnons</span></h1>
+                <p>dans toutes les étapes pré-ebauche et post-embauche, de la rédaction de votre CV jusqu'au suivi de vos premiers pas dans l'entreprise</p>
+                <button type="button" class="findJobButton">Trouver un job</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="firstSection" >
+
+        </div>
+
+        <div class="secondSection paddingLeft">
+            <h1 class="title"><span class="boldTitle">Comment</span> ça se passe ?</h1>
+            <ul>
+                <li>Vous créez votre compte</li>
+                <li>Vous validez votre profil</li>
+                <li>Vous postulez aux annonces</li>
+            </ul>
+            <p>Si votre profil correspond aux besoins d'un recruteur, on vous rapelle !</p>
+        </div>
+
+        <div class="thirdSection">
+        
+        </div>
+    </div>
+</div>
+
+<div class="statContainer">
+    <div class="statItem">
+        <h1 class="title">Infos à propos de <br><span class="boldTitle">MDM.</span></h1>
+        <div class="containerChiffre">
+            <div class="boxChiffre">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>    
+            </div>
+            <div class="boxChiffre">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>    
+            </div>
+            <div class="boxChiffre">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>    
+            </div>
+            <div class="boxChiffre">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>    
+            </div>
+        </div>
+
+        <div class="containerChiffreLong">
+            <div class="boxChiffreLong">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>
+            </div>
+            <div class="boxChiffreLong">
+                <h2 class="titreChiffre">216 003</h2>
+                <p class="descriptionChiffre">Offres d'emploi reçu cette semaine</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="containerMondeTravail">
+    <h1 class="title">On en parle dans <br><span class="greenTitle">le monde du travail.</span></h1>
+    <div class="containerBlog">
+        <div class="containerArticle">
+            <div class="divImgContainer"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Critiquer son entreprise sur les réseaux sociaux, est-ce une faute grave ?</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="containerArticle">
+            <div class="divImgContainer2"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Êtes-vous trop cash au travail ? Faites le test !</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="containerArticle">
+            <div class="divImgContainer3"></div>
+            <div class="descriptionContainer">
+                <div class="textCard">
+                    <p class="descriptionCard">Travail : ce qu'il faut retenir du discours de politique général de Gabriel Attal</p>
+                </div>
+                <div class="arrowBtnContainer">
+                    <button class="btnArrow"><img class="imgBtnArrow" src="{{ asset('img/home/arrowSVG.svg') }}" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="" class="btnVoirActualites">Voir les actualités</a>
+</div>
+
+<div class="containerOffre">
+    <div class="titleOffre">
+        <h1 class="title">Les offres <span class="greenTitle">récentes.</span></h1>
+    </div>
+
+    <div class="containerGlobalOffre">
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="offreCard">
+            <div class="detailCard">
+                <div class="leftCard">
+                    <div class="imgContainer">
+                    </div>
+                </div>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="locationOffre">Développeur web</p>
+                            <h3>Bachelor WebDesign H/F</h3>
+                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <div class="containerDate">
+                                <p>Publiée le 20/02/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
+                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
+                        </div>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button>Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="motEquipe">
+    <div class="containerMot">
+        <h1>Nous avons réuni autour de nous un collectif de passionnés<br><span class="titrePolice">pour faire emerger de nouvelles voies.</span></h1>
+   </div>
+   <div class="motGeneralEquipe">
+        <div class="containerImg">
+            <img src="{{ asset('img/home/imgMot.svg') }}" alt="">
+        </div>
+        <div class="phrasePresentation">
+            <p>Hugo, Florence, Sophie, Damien.. Nous sommes une équipe d'experts, complémentaires par nos savoirs.Prêts à partager nos compétences et méthodes avec vous, pour agir ensemble sur le monde de demain.</p>
+        </div>
+   </div>
+</div>
+
+<div class="containerFindJob">
+    <div class="titleFindJob">
+        <h1 class="title">Trouvez le travail qui correspond<br> <span class="greenTitle">A votre handicap.</span></h1>
+    </div>
+
+    <div class="containerCard">
+        <div class="row">
+            <div class="cardContainer">
+                <p>Travailler avec un handicap visuel !</p>
+                <div class="containerImg">
+                <img src="{{ asset('img/home/illustrationHandi1.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <p>Travailler avec un handicap auditif !</p>
+                <div class="containerImg">
+                    <img src="{{ asset('img/home/illustrationHandi2.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <p>Travailler avec un handicap consécutif avec à une maladie invalidante !</p>
+                <div class="containerImg">
+                    <img src="{{ asset('img/home/illustrationHandi3.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cardContainer">
+                <p>Travailler avec un handicap moteur !</p>
+                <div class="containerImg">
+                <img src="{{ asset('img/home/illustrationHandi4.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <p>Travailler avec un handicap intellectuel !</p>
+                <div class="containerImg">
+                    <img src="{{ asset('img/home/illustrationHandi5.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <p>Travailler avec un handicap psychique !</p>
+                <div class="containerImg">
+                    <img src="{{ asset('img/home/illustrationHandi6.png') }}" alt="Illustration handicap visuel">
+                </div>
+                <div class="btnContainer">
+                    <button class="btnVoirOffre">Voir les offres</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="containerFindJobInFrance">
+    <div class="titleJobFrance">
+        <h1 class="title">Trouvez du travail<br><span class="greenTitle">dans toute la France.</span></h1>
+    </div>
+
+    <div class="cardContainerVille">
+        <div class="cardVille">
+            <div class="imgContainer">
+                <img src="{{ asset('img/home/imgVille1.png') }}" alt="Paris">
+            </div>
+        </div>
+        <div class="cardVille">
+            <div class="imgContainer">
+                <img src="{{ asset('img/home/imgVille2.png') }}" alt="Angers">
+            </div>
+        </div>
+        <div class="cardVille">
+            <div class="imgContainer">
+                <img src="{{ asset('img/home/imgVille3.png') }}" alt="Marseille">
+            </div>
+        </div>
+    </div>
+
+    <div class="containerTagVille">
+        <div class="rowTag">
+            <div class="tag">
+                <p>Paris</p>
+            </div>
+            <div class="tag">
+                <p>Marseille</p>
+            </div>
+            <div class="tag">
+                <p>Lyon</p>
+            </div>
+            <div class="tag">
+                <p>Toulouse</p>
+            </div>
+            <div class="tag">
+                <p>Nice</p>
+            </div>
+            <div class="tag">
+                <p>Nantes</p>
+            </div>
+            <div class="tag">
+                <p>Strasbourg</p>
+            </div>
+            <div class="tag">
+                <p>Montpellier</p>
+            </div>
+            <div class="tag">
+                <p>Bordeaux</p>
+            </div>
+            <div class="tag">
+                <p>Lille</p>
+            </div>
+            <div class="tag">
+                <p>Rennes</p>
+            </div>
+            <div class="tag">
+                <p>Reims</p>
+            </div>
+        </div>
+        <div class="rowTag">
+            <div class="tag">
+                <p>Le Havre</p>
+            </div>
+            <div class="tag">
+                <p>Limoges</p>
+            </div>
+            <div class="tag">
+                <p>Toulon</p>
+            </div>
+            <div class="tag">
+                <p>Grenoble</p>
+            </div>
+            <div class="tag">
+                <p>Dijon</p>
+            </div>
+            <div class="tag">
+                <p>Angers</p>
+            </div>
+            <div class="tag">
+                <p>Nîmes</p>
+            </div>
+            <div class="tag">
+                <p>Tours</p>
+            </div>
+            <div class="tag">
+                <p>Orléans</p>
+            </div>
+            <div class="tag">
+                <p>Le Mans</p>
+            </div>
+            <div class="tag">
+                <p>Rouen</p>
+            </div>
+            <div class="tag">
+                <p>Brest</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="containerQuestion">
+    <div class="row">
+        <div class="left">
+            <h1>Des questions ?</h1>
+            <p>Nos experts sont là pour y répondre :)</p>
+        </div>
+        <div class="right">
+            <div class="imgContainer">
+                <img src="{{ asset('img/home/illustrationAccordeon.svg') }}" alt="Illustration question">
+            </div>
+        </div>
+    </div>
+    <div class="row2">
+        <div class="left">
+            <div class="containerBtn">
+                <button class="btnPoserQuestion">Posez-nous vos questions</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">En quoi MDM peuvent-il m’aider ?</div>
+                    <div class="accordion-content">
+                        <p>MDM aide à l'insertion professionnelle des personnes handicapées en fournissant des conseils, des formations et des partenariats avec des employeurs pour favoriser l'emploi inclusif.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Puis-je trouver du travail facilement ?</div>
+                    <div class="accordion-content">
+                        <p>Trouver un emploi peut être facilité grâce aux services spécialisés de MDM, qui offrent accompagnement, formation et mise en relation avec des employeurs sensibilisés à l'inclusion.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Quels sont les services proposés par MDM ?</div>
+                    <div class="accordion-content">
+                        <p>MDM propose des services d'accompagnement individuel, de formation professionnelle, de mise en relation avec des employeurs, et de conseil en accessibilité pour les personnes handicapées et les entreprises.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Je veux recruter des candidats en situation de handicap.</div>
+                    <div class="accordion-content">
+                        <p>MDM peut vous aider à recruter des candidats handicapés en proposant des services de présélection, de conseil en aménagement de poste, et en sensibilisant votre équipe à l'inclusion.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Puis-je acheter du matériel adapté aux personnes en situation de handicap ?</div>
+                    <div class="accordion-content">
+                        <p>Oui, MDM peut vous conseiller sur l'achat de matériel adapté et vous orienter vers des fournisseurs spécialisés pour améliorer l'accessibilité de votre entreprise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.accordion-header').forEach(item => {
+        item.addEventListener('click', () => {
+            const content = item.nextElementSibling;
+            item.classList.toggle('active');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        });
+    });
+</script>
+
+{% endblock %}

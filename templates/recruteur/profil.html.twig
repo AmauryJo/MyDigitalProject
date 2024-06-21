@@ -1,0 +1,91 @@
+{% extends 'baseRecruteur.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="containerProfil">
+        <div class="row">
+            <div class="left">
+                <div class="containerStatut allContainer">
+                    <h2 class="title">Mon statut</h2>
+                    <div class="statut">
+                    {# {{ form_start(formIsActif) }}
+                        {{ form_widget(formIsActif) }}
+                        <button type="submit" class="btn btn-success" style="display:none;">Sauvegarder</button>
+                    {{ form_end(formIsActif) }} #}
+                    </div>
+                    <p class="description">Faites savoir aux chercheurs d'emplois s'ils peuvent vous contacter.</p>
+                </div>
+                {{ dump(app.user) }}
+
+                <div class="containerSuivi allContainer">
+                    <h2 class="title">Suivi annonce</h2>
+                    <p class="description">Suivre en direct vos annonce en ligne.</p>
+                    <button class="btnSuivi">Voir mes annonces</button>
+                </div>
+            </div>
+            <div class="right allContainer">
+                <div class="infoPerso">
+                    <div class="containerTop">
+                        <h2 class="title">Informations personnelles</h2>
+                        <div class="statutCompletion" >
+                            {# {% if demandeur.nom is not null and demandeur.prenom is not null and demandeur.mail is not null and demandeur.telephone is not null and demandeur.ville is not null and demandeur.dateDeNaissance is not null and demandeur.genre is not null %}
+                                complete
+                            {% elseif demandeur.nom is null and demandeur.prenom is null and demandeur.mail is null and demandeur.telephone is null and demandeur.ville is null and demandeur.date_de_naissance is null and demandeur.genre is null %}
+                                toComplete
+                            {% else %}
+                                nearComplete
+                            {% endif %}">
+                            {% if demandeur.nom is not null and demandeur.prenom is not null and demandeur.mail is not null and demandeur.telephone is not null and demandeur.ville is not null and demandeur.dateDeNaissance is not null and demandeur.genre is not null %}
+                                Complété
+                            {% elseif demandeur.nom is null and demandeur.prenom is null and demandeur.mail is null and demandeur.telephone is null and demandeur.ville is null and demandeur.date_de_naissance is null and demandeur.genre is null %}
+                                A compléter
+                            {% else %}
+                                Presque complet
+                            {% endif %} #}
+                        </div>
+                    </div>
+                    <p class="description">Permettez aux recruteurs de vous contacter.</p>
+                    <div class="containerForm">
+                        <div>
+                            <label for="nom" class="labelForm">Nom de l'entreprise</label>
+                            <input type="text" id="nom" name="nom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.nom is defined ? app.user.nom|title : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="prenom" class="labelForm">Secteur d'activité</label>
+                            <input type="text" id="prenom" name="prenom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.entr_mail is defined ? app.user.entr_mail|title : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="email" class="labelForm">Nombre d'employé</label>
+                            <input type="text" id="email" name="email" class="inputForm" placeholder="Non renseigné" value="{{ app.user.mail is defined ? app.user.mail : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="email" class="labelForm">Addresse e-mail{{ app.user.entr_mail}}</label>
+                            <input type="text" id="email" name="email" class="inputForm" placeholder="Non renseigné" value="{{ app.user.entr_mail is defined ? app.user.entr_mail : '' }}" disabled>
+                        </div>
+                        <div>
+                            <label for="tel" class="labelForm">Téléphone</label>
+                            <input type="text" id="tel" name="tel" class="inputForm" placeholder="Non renseigné" value="{{ app.user.telephone is defined ? app.user.telephone : '' }}" disabled>
+                        </div>
+                        <div>
+                        <button class="btnModifier">Modifier le profil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Code javascript pour changer une valeur en BDD sans forcer l'utilisateur à cliquer sur un bouton submit
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectField = document.querySelector('#is_actif_actif');
+            selectField.addEventListener('change', function() {
+                this.form.submit();
+            });
+        });
+    </script>
+{% endblock %}

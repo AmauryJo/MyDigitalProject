@@ -100,13 +100,13 @@ footer{
 
             .btnLoginFooter{
                 background-color: white;
-                border: 2px solid #0F172A;
                 border-radius: 25px;
                 color: #0F172A;
                 padding: 15px;
                 font-size: 16px;
                 padding-left: 30px;
                 padding-right: 30px;
+                text-decoration: none;
             }
             .btnFindJobFooter{
                 background-color: #0F172A;
@@ -115,6 +115,7 @@ footer{
                 padding: 15px;
                 border: 2px solid white;
                 font-size: 16px;
+                text-decoration: none;
             }
         }
         .rightFooter{

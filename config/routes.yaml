@@ -11,6 +11,11 @@ index:
         route: 'app_home'
         permanent: true
 
+
+app_entreprises_dashboard:
+    path: /recruteur/dashboard
+    controller: App\Controller\EntreprisesController::dashboard
+
 # config/routes.yaml
 # accueil:
 #     path: '/home'

@@ -17,13 +17,23 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            lazy: true
+        entreprises:
+            pattern: ^/recruteur
+            provider: entreprises_provider
+            custom_authenticator: App\Security\EntreprisesAuthenticator
+            entry_point: App\Security\EntreprisesAuthenticator
+            logout:
+                path: app_logout
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /recruteur
+
+        demandeur:
+            pattern: ^/
             provider: demandeur_provider
-            custom_authenticator:
-                - App\Security\DemandeurAuthenticator
-                - App\Security\EntreprisesAuthenticator
-            entry_point: App\Security\DemandeurAuthenticator # Ou App\Security\EntreprisesAuthenticator selon votre besoin
+            custom_authenticator: App\Security\DemandeurAuthenticator
+            entry_point: App\Security\DemandeurAuthenticator
             logout:
                 path: app_logout
             remember_me:
@@ -34,8 +44,10 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/entreprises, roles: ROLE_ENTREPRISE }
-
+        - { path: ^/home, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/recruteur/connexion, roles: PUBLIC_ACCESS }
+        
 when@test:
     security:
         password_hashers:

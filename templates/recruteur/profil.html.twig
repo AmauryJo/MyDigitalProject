@@ -14,14 +14,13 @@
                 <div class="containerStatut allContainer">
                     <h2 class="title">Mon statut</h2>
                     <div class="statut">
-                    {# {{ form_start(formIsActif) }}
+                    {{ form_start(formIsActif) }}
                         {{ form_widget(formIsActif) }}
-                        <button type="submit" class="btn btn-success" style="display:none;">Sauvegarder</button>
-                    {{ form_end(formIsActif) }} #}
+                        <button type="submit" class="btn btn-success" id="isActifBtn" style="display:none;">Sauvegarder</button>
+                    {{ form_end(formIsActif) }}
                     </div>
                     <p class="description">Faites savoir aux chercheurs d'emplois s'ils peuvent vous contacter.</p>
                 </div>
-                {{ dump(app.user) }}
 
                 <div class="containerSuivi allContainer">
                     <h2 class="title">Suivi annonce</h2>
@@ -31,8 +30,13 @@
             </div>
             <div class="right allContainer">
                 <div class="infoPerso">
+                        {% for message in app.flashes('success') %}
+                            <div class="alertSuccess">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                     <div class="containerTop">
-                        <h2 class="title">Informations personnelles</h2>
+                        <h2 class="title">Informations entreprise</h2>
                         <div class="statutCompletion" >
                             {# {% if demandeur.nom is not null and demandeur.prenom is not null and demandeur.mail is not null and demandeur.telephone is not null and demandeur.ville is not null and demandeur.dateDeNaissance is not null and demandeur.genre is not null %}
                                 complete
@@ -50,42 +54,49 @@
                             {% endif %} #}
                         </div>
                     </div>
-                    <p class="description">Permettez aux recruteurs de vous contacter.</p>
-                    <div class="containerForm">
-                        <div>
-                            <label for="nom" class="labelForm">Nom de l'entreprise</label>
-                            <input type="text" id="nom" name="nom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.nom is defined ? app.user.nom|title : '' }}" disabled>
+                        <p class="description">Permettez aux chercheurs d'emploi de vous contacter.</p>
+                        <div class="containerForm">
+                            {{ form_start(formInfoEntreprises) }}
+                            <div>
+                                <label for="nom" class="labelForm">Nom de l'entreprise</label>
+                                <input type="text" id="nom" name="nom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.nom is defined ? app.user.nom|title : '' }}" disabled>
+                            </div>
+                            <div>
+                                <label for="secteur_activite" class="labelForm">Secteur d'activité</label>
+                                {{ form_widget(formInfoEntreprises.secteur_activite, {'attr': {'class': 'inputForm'}}) }}
+                            </div>
+                            <div>
+                                <label for="nombre_employe" class="labelForm">Nombre d'employé</label>
+                                {{ form_widget(formInfoEntreprises.nombre_employe, {'attr': {'class': 'inputForm'}}) }}
+                            </div>
+                            <div>
+                                <label for="entr_mail" class="labelForm">Addresse e-mail</label>
+                                {{ form_widget(formInfoEntreprises.entr_mail, {'attr': {'class': 'inputForm'}}) }}
+                            </div>
+                            <div>
+                                <label for="telephone" class="labelForm">Téléphone</label>
+                                {{ form_widget(formInfoEntreprises.telephone, {'attr': {'class': 'inputForm'}}) }}
+                            </div>
+                            <div>
+                                <button type="submit" class="btnModifier">Modifier le profil</button>
+                            </div>
+                            {{ form_end(formInfoEntreprises) }}
                         </div>
-                        <div>
-                            <label for="prenom" class="labelForm">Secteur d'activité</label>
-                            <input type="text" id="prenom" name="prenom" class="inputForm" placeholder="Non renseigné" value="{{ app.user.entr_mail is defined ? app.user.entr_mail|title : '' }}" disabled>
-                        </div>
-                        <div>
-                            <label for="email" class="labelForm">Nombre d'employé</label>
-                            <input type="text" id="email" name="email" class="inputForm" placeholder="Non renseigné" value="{{ app.user.mail is defined ? app.user.mail : '' }}" disabled>
-                        </div>
-                        <div>
-                            <label for="email" class="labelForm">Addresse e-mail{{ app.user.entr_mail}}</label>
-                            <input type="text" id="email" name="email" class="inputForm" placeholder="Non renseigné" value="{{ app.user.entr_mail is defined ? app.user.entr_mail : '' }}" disabled>
-                        </div>
-                        <div>
-                            <label for="tel" class="labelForm">Téléphone</label>
-                            <input type="text" id="tel" name="tel" class="inputForm" placeholder="Non renseigné" value="{{ app.user.telephone is defined ? app.user.telephone : '' }}" disabled>
-                        </div>
-                        <div>
-                        <button class="btnModifier">Modifier le profil</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <script>
-    // Code javascript pour changer une valeur en BDD sans forcer l'utilisateur à cliquer sur un bouton submit
         document.addEventListener('DOMContentLoaded', function() {
-            const selectField = document.querySelector('#is_actif_actif');
-            selectField.addEventListener('change', function() {
-                this.form.submit();
-            });
+            const selectField = document.querySelector('#is_actif_type_recruteur_actif');
+            if (selectField) {
+                selectField.addEventListener('change', function() {
+                    this.form.submit();
+                });
+            } else {
+                console.error('Le champ de sélection avec l\'ID #is_actif_type_recruteur_actif n\'a pas été trouvé.');
+            }
         });
     </script>
 {% endblock %}

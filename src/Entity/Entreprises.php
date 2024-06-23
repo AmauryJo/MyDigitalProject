@@ -36,6 +36,9 @@ class Entreprises implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer', length: 10)]
     private ?int $telephone = null;
 
+    #[ORM\Column(type: "boolean", nullable: true)]
+    private ?bool $actif = null;
+
     public function __construct()
     {
         // Cette initialisation est redondante car elle est déjà faite lors de la déclaration de la propriété.
@@ -132,5 +135,16 @@ class Entreprises implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // Effacer les données temporaires sensibles
+    }
+
+    public function isActif(): ?bool
+    {
+        return $this->actif;
+    }
+
+    public function setActif(?bool $actif): self
+    {
+        $this->actif = $actif;
+        return $this;
     }
 }

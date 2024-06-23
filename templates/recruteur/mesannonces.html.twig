@@ -1,0 +1,57 @@
+{% extends 'baseRecruteur.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="containerContact">
+    <div class="left">
+        <div class="containerTop">
+            <h1 class="title">Contactez-nous !</h1>
+            <p class="subTitle">Une question ? Nos experts sont la pour y répondre :)</p>    
+        </div>
+        <div class="containerBottom">
+            <img src="{{ asset('img/contact/dessin.svg') }}" alt="">
+        </div>
+    </div>
+    <div class="right">
+        <div class="containerForm">
+            <div class="firstRow">
+                <div class="nom">
+                    <p>Nom</p>
+                    <input class="inputForm" type="text" name="" id="" placeholder="Votre nom">
+                </div>
+                <div class="prenom">
+                    <p>Prénom</p>
+                    <input class="inputForm" type="text" name="" id="" placeholder="Votre prenom">
+                </div>
+            </div>
+            <div class="secondRow">
+                <div class="email">
+                    <p>E-mail</p>
+                    <input class="inputFormLong" type="text" name="" id="" placeholder="Votre e-mail">
+                </div>
+            </div>
+            <div class="thirdRow">
+                <div class="telephone">
+                    <p>Téléphone</p>
+                    <input class="inputFormLong" type="text" name="" id="" placeholder="Votre numéro de téléphone">
+                </div>
+            </div>
+            <div class="lastRow">
+                <div class="message">
+                    <p>Message</p>
+                    <textarea class="inputText" type="text" name="" id="" placeholder="Bonjour..."></textarea>
+                </div>
+            </div>
+            <div class="containerBtn">
+                <button>Envoyer votre message</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

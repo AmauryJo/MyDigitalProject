@@ -1,0 +1,57 @@
+{% extends "baseRecruteur.html.twig" %}
+
+{% block title %}Poster une annonce{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/recruteur/annonce.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="containerInscription">
+    <h1 class="greenTitle">Poster une annonce</h1>
+    <div class="formContainer">
+        {{ form_start(form) }}
+        <div>
+            <p>Intitulé de l'offre</p>
+            {{ form_row(form.offre_intitule, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': "Intitulé de l'offre"}
+            }) }}
+        </div>
+        <div>
+            <p>Rémunération</p>
+            {{ form_row(form.offre_remuneration, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'placeholder': 'Rémunération de l\'offre'}
+            }) }}
+        </div>
+        <div>
+            <p>Présentation de l'entreprise</p>
+            {{ form_row(form.presentation_entreprise, {
+                'label': false,
+                'attr': {'class': 'textarea', 'placeholder': 'Présentation de l\'entreprise'}
+            }) }}
+        </div>
+        <div>
+            <p>Le profil recherché</p>
+            {{ form_row(form.offre_description, {
+                'label': false,
+                'attr': {'class': 'textarea', 'placeholder': 'Description de l\'offre'}
+            }) }}
+        </div>
+        <div>
+            <p>Les missions du poste</p>
+            {{ form_row(form.mission_offre, {
+                'label': false,
+                'attr': {'class': 'textarea', 'placeholder': 'Missions du poste'}
+            }) }}
+        </div>
+        {{ form_errors(form) }}
+        <div class="btnContainer">
+            <button type="submit" class="btnSubmit">Mettre en ligne</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

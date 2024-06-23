@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Entreprises;
+use App\Entity\OffreEmploi;
 use App\Form\EntreprisesType;
 use App\Form\IsActifTypeRecruteur;
 use App\Form\InfoEntreprisesType;
+use App\Form\OffreEmploiType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,9 +57,9 @@ class EntreprisesController extends AbstractController
     #[Route('/recruteur/connexion', name: 'app_entreprises_connexion')]
     public function connexion(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('app_home');
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_entreprises_dashboard');
+        }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -90,33 +92,68 @@ class EntreprisesController extends AbstractController
     public function profil(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-    if (!$user) {
-        return $this->redirectToRoute('app_entreprises_connexion');
+        if (!$user) {
+            return $this->redirectToRoute('app_entreprises_connexion');
+        }
+
+        $formIsActifRecruteur = $this->createForm(IsActifTypeRecruteur::class, $user);
+        $formIsActifRecruteur->handleRequest($request);
+
+        if ($formIsActifRecruteur->isSubmitted() && $formIsActifRecruteur->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Le statut actif a été mis à jour.');
+            return $this->redirectToRoute('app_entreprises_profil');
+        }
+
+        $formInformationEntreprise = $this->createForm(InfoEntreprisesType::class, $user);
+        $formInformationEntreprise->handleRequest($request);
+
+        if ($formInformationEntreprise->isSubmitted() && $formInformationEntreprise->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Les informations de l\'entreprise ont été mises à jour.');
+            return $this->redirectToRoute('app_entreprises_profil');
+        }
+
+        return $this->render('recruteur/profil.html.twig', [
+            'formIsActif' => $formIsActifRecruteur->createView(),
+            'formInfoEntreprises' => $formInformationEntreprise->createView(),
+        ]);
     }
 
-    $formIsActifRecruteur = $this->createForm(IsActifTypeRecruteur::class, $user);
-    $formIsActifRecruteur->handleRequest($request);
+    #[Route('/recruteur/annonce', name: 'app_entreprises_annonce')]
+    public function annonce(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $offre = new OffreEmploi();
+        $form = $this->createForm(OffreEmploiType::class, $offre);
 
-    if ($formIsActifRecruteur->isSubmitted() && $formIsActifRecruteur->isValid()) {
-        $entityManager->persist($user);
-        $entityManager->flush();
-        $this->addFlash('success', 'Le statut actif a été mis à jour.');
-        return $this->redirectToRoute('app_entreprises_profil');
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Définir l'entreprise de l'offre d'emploi (vous devrez peut-être récupérer l'entreprise connectée)
+            $entreprise = $this->getUser();
+            $offre->setEntreprise($entreprise);
+
+            $entityManager->persist($offre);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Offre d\'emploi ajoutée avec succès.');
+
+            return $this->redirectToRoute('app_entreprises_mesannonces');
+        }
+
+        return $this->render('recruteur/annonce.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
-    $formInformationEntreprise = $this->createForm(InfoEntreprisesType::class, $user);
-    $formInformationEntreprise->handleRequest($request);
+    #[Route('/recruteur/mesannonces', name: 'app_entreprises_mesannonces')]
+    public function mesannonces(): Response
+    {
 
-    if ($formInformationEntreprise->isSubmitted() && $formInformationEntreprise->isValid()) {
-        $entityManager->persist($user);
-        $entityManager->flush();
-        $this->addFlash('success', 'Les informations de l\'entreprise ont été mises à jour.');
-        return $this->redirectToRoute('app_entreprises_profil');
+
+        return $this->render('recruteur/mesannonces.html.twig', [
+        ]);
     }
 
-    return $this->render('recruteur/profil.html.twig', [
-        'formIsActif' => $formIsActifRecruteur->createView(),
-        'formInfoEntreprises' => $formInformationEntreprise->createView(),
-    ]);
-    }
 }

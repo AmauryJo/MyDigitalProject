@@ -1,0 +1,96 @@
+.greenTitle{
+    color: #4855A1; 
+}
+textarea{
+    width: 70%;
+    max-width: 80%;
+    height: 150px;
+    max-height: 200px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 2%;
+    resize: none;
+}
+
+.containerInscription {
+    padding-top: 5%;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    
+    .formContainer{
+        width: 70%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        justify-content: center;
+        padding-left: 15%;
+        padding-right: 15%;
+
+        .inputForm{
+            width: 80%;
+            height: 30px;
+            border-radius: 20px;
+            border: none;
+            padding: 5px;
+        }
+
+        .caseCoche{
+            width: 100%;
+        }
+
+        .btnContainer{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            
+            .btnSubmit{
+                background-color: #0F172A;
+                border-radius: 25px;
+                color: white;
+                padding: 15px;
+                border: 2px solid white;
+                font-size: 16px;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+    }
+
+}
+
+.select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: #000;
+    position: relative;
+    width: 80%;
+}
+
+.selectForm {
+    display: inline-block;
+    width: 80%;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='2' d='M6 9l6 6 6-6'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}

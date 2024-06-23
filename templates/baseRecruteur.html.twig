@@ -9,6 +9,7 @@
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <script src="https://cdn.jsdelivr.net/gh/PrabothCharith/accessibility-plugin@main/accessibility-menu.min.js"></script>
         {% endblock %}
     </head>
      
@@ -25,7 +26,6 @@
                     <img src="{{ asset('img/navSeparator.svg') }}" alt="Trait de séparation">
                     {% if app.user %}
                         <li><a class="linkNav" href="/recruteur/profil">Mon compte</a></li>
-                        <li><a href="{{ path('app_logout') }}">Logout</a></li>
                     {% else %}
                         <li><a class="linkNav" href="/login">Login</a></li>
                     {% endif %}
@@ -35,9 +35,9 @@
             </div>
         </nav>
         
-        <div class="containerAccesibility">
+        {# <div class="containerAccesibility">
             <button class="btnAccesibility"><img src="{{ asset('img/accessibilityBtn.svg') }}" alt="Bouton accessibilité"></button>
-        </div>
+        </div> #}
             {% block body %}{% endblock %}
             {% if app.request.pathinfo != '/recruteur/dashboard' %}
                 <div class="pathContainer">
@@ -95,3 +95,9 @@
         </footer>
     </body>
 </html>
+<style>
+    #closeBtn{
+        background-color: #4855A1 !important;
+        border: none;
+        }
+</style>

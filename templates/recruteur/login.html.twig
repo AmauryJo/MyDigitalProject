@@ -19,11 +19,7 @@
         <h1 class="greenTitle">Connexion entreprise !</h1>
         <p>Pas encore de compte ? <a href="{{ path('recruteur_inscription') }}"><span class="greenTitle">Inscrivez-vous</span></a></p>
         <p>Vous êtes un chercheur d'emploi ? <a href="/login"><span class="greenTitle">Allez ici !</span></a></p>
-        {% for label, messages in app.flashes %}
-            <div class="successMessage">
-                <p>{{ message }}</p>
-            </div>
-        {% endfor %}
+
 
         <div class="formContainer">
             <p class="inputTitle">Adresse email</p>

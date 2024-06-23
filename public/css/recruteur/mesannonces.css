@@ -1,0 +1,165 @@
+.containerOffre{
+    .row{
+        height: 350px;
+        background-image: url('../../img/mesannonces/backgoundImg.png');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+    }
+
+    .row2{
+        padding: 8%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 0;
+        display: flex;
+
+        .left{
+            width: 60%;
+            h1{
+                font-weight: 100;
+            }
+            .containerTag{
+                display: flex;
+
+                p{
+                    margin: 1%;
+                    border: 1px solid grey;
+                    padding: 10px 20px;
+                }
+            }
+        }
+
+        .right{
+            width: 40%;
+            padding-left: 2%;
+
+            .cardContainer{
+                width: 415px;
+
+                
+                .topCard{
+                    background-image: url('../../img/mesannonces/imgCard.png');
+                    background-size: cover; 
+                    background-position: center; 
+                    background-repeat: no-repeat;
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 100px;
+                }
+                .bodyCard{
+
+                    h3{
+                        font-weight: 100;
+                    }
+
+                    .containerTag{
+                        display: flex;
+                        height: auto;
+
+                        p{
+                            margin: 1%;
+                            border: 1px solid grey;
+                        }
+                    }
+                }
+                .bottomCard{
+                    width: 100%;
+                    height: 50px;
+                    a{
+                        text-decoration: none;
+                        padding: 2% 15%;
+                        border-radius: 20px;
+                        background-color: #0F172A;
+                        color: white;
+                        width: 310px;
+                        display: block;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.containerContact{
+    padding: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+
+    .left{
+        .title{
+            color: #0F172A;
+            font-size: 70px;
+        }
+    }
+
+    .right{
+
+        .containerForm{
+            width: 30%;
+            background-color: #F9F9F9;
+            border-radius: 20px;
+            padding: 2%;
+
+            p{
+                margin-bottom: 0;
+                margin-top: 6%;
+            }
+
+            .inputForm{
+                border: none;
+                border-bottom: 1px solid black;
+                padding: 10px 5px;
+                width: auto;
+            }
+            .inputFormLong{
+                border: none;
+                border-bottom: 1px solid black;
+                padding: 10px 5px;
+                padding-right: 0;
+                width: 98%;
+            }
+
+            textarea{
+                margin-top: 1%;
+                border: none;
+                border-bottom: 1px solid black;
+                width: 100%;
+                max-width: 100%;
+                height: 100px;
+                resize: none;
+            }
+            .firstRow{
+                display: flex;
+                justify-content: space-between;
+
+                .nom{
+                    width: auto;
+                }
+                .prenom{
+                    width: auto;
+                }
+            }
+
+            .secondRow{
+                width: 100%;
+
+            }
+        }
+
+        .containerBtn{
+            margin-top: 3%;
+            button{
+                background-color: #4855A1;
+                border-radius: 25px;
+                color: white;
+                padding: 15px;
+                border: none;
+                font-size: 16px;
+            }
+        }
+    }
+}
+

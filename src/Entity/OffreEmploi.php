@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OffreEmploiRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OffreEmploiRepository::class)]
@@ -33,8 +34,24 @@ class OffreEmploi
 
     #[ORM\Column(type: 'integer', length: 10)]
     #[Assert\NotBlank]
-    #[Assert\Range(min: 0, max: 100000)]
+    #[Assert\Range(min: 0, max: 1000000)]
     private ?int $offre_remuneration = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $imageLink = null;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $imageFilename = null;
+
+    /**
+     * @var File|null
+     */
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/gif'],
+        mimeTypesMessage: 'Veuillez télécharger une image valide (jpeg, png, gif)'
+    )]
+    private ?File $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'entreprise', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -105,6 +122,26 @@ class OffreEmploi
         return $this;
     }
 
+    public function getImageName(): ?string
+    {
+        return $this->imageLink;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageLink = $imageName;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
     public function getEntreprise(): ?Entreprises
     {
         return $this->entreprise;
@@ -113,6 +150,18 @@ class OffreEmploi
     public function setEntreprise(Entreprises $entreprise): static
     {
         $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }

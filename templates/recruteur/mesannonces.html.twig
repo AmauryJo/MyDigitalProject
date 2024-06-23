@@ -1,57 +1,116 @@
-{% extends 'baseRecruteur.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Détails de l'annonce{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/recruteur/mesannonces.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="containerContact">
-    <div class="left">
-        <div class="containerTop">
-            <h1 class="title">Contactez-nous !</h1>
-            <p class="subTitle">Une question ? Nos experts sont la pour y répondre :)</p>    
+    <div class="containerOffre">
+        <div class="row">
+        
         </div>
-        <div class="containerBottom">
-            <img src="{{ asset('img/contact/dessin.svg') }}" alt="">
+
+        <div class="row2">
+            <div class="left">
+                <div class="topContainer">
+                    <img src="" alt="">
+                </div>
+                <h1>{{ offreEmploi.offreIntitule }}</h1>
+                <div class="containerTag">
+                    <p>Canal +</p>
+                    <p>Alternance</p>
+                    <p>Paris</p>
+                    <p>36k/ an</p>
+                </div>
+                <h1>Les missions du poste</h1>
+                <p>{{ offreEmploi.missionOffre }}</p>
+
+                <h1>Le profil recherché</h1>
+                <p>{{ offreEmploi.offredescription }}</p>
+
+                <h1>Présentation de l'entreprise</h1>
+                <p>{{ offreEmploi.presentationEntreprise }}</p>
+            </div>
+
+            <div class="right">
+                <div class="cardContainer">
+                    <div class="topCard"></div>
+                    <div class="bodyCard">
+                        <h3>{{ offreEmploi.offreIntitule }}</h3>
+                        <p>{{ offreEmploi.entreprise.nom }}</p>
+                        <div class="containerTag">
+                            <p>Télétravail</p>
+                            <p>12 mois</p>
+                            <p>Junior accepté</p>
+                            <p>Bac +3</p>
+                        </div>
+                        <p><strong>Publiée le 17/04/2024 - Réf : 2024-6141</strong></p>
+                    </div>
+                    <div class="bottomCard">
+                        <a href="#candidat">Postuler</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="row3" id="candidat">
+            <div class="containerContact">
+                <div class="left">
+                    <div class="containerTop">
+                        <h1 class="title" >Candidater dès maintenant !</h1>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="containerForm">
+                        <div class="firstRow">
+                            <div class="nom">
+                                <p>Nom</p>
+                                <input class="inputForm" type="text" name="" id="" placeholder="Votre nom">
+                            </div>
+                            <div class="prenom">
+                                <p>Prénom</p>
+                                <input class="inputForm" type="text" name="" id="" placeholder="Votre prenom">
+                            </div>
+                        </div>
+                        <div class="secondRow">
+                            <div class="email">
+                                <p>E-mail</p>
+                                <input class="inputFormLong" type="text" name="" id="" placeholder="Votre e-mail">
+                            </div>
+                        </div>
+                        <div class="thirdRow">
+                            <div class="telephone">
+                                <p>Téléphone</p>
+                                <input class="inputFormLong" type="text" name="" id="" placeholder="Votre numéro de téléphone">
+                            </div>
+                        </div>
+                        <div class="lastRow">
+                            <div class="message">
+                                <p>Message</p>
+                                <textarea class="inputText" type="text" name="" id="" placeholder="Bonjour..."></textarea>
+                            </div>
+                        </div>
+                        <div class="containerBtn">
+                            <button>Envoyer votre message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# <h1>Détails de l'annonce</h1>
+        <p>Intitulé de l'offre : {{ offreEmploi.offreIntitule }}</p>
+        <p>Rémunération : {{ offreEmploi.offreRemuneration }}</p>
+        <p>Présentation de l'entreprise : {{ offreEmploi.presentationEntreprise }}</p>
+        <p>Mission de l'offre : {{ offreEmploi.missionOffre }}</p>
+
+        {% if offreEmploi.imageFilename %}
+            <div class="annonce-image">
+                <img src="{{ asset('uploads/img/' ~ offreEmploi.imageFilename) }}" alt="Image de l'annonce">
+            </div>
+        {% endif %} #}
     </div>
-    <div class="right">
-        <div class="containerForm">
-            <div class="firstRow">
-                <div class="nom">
-                    <p>Nom</p>
-                    <input class="inputForm" type="text" name="" id="" placeholder="Votre nom">
-                </div>
-                <div class="prenom">
-                    <p>Prénom</p>
-                    <input class="inputForm" type="text" name="" id="" placeholder="Votre prenom">
-                </div>
-            </div>
-            <div class="secondRow">
-                <div class="email">
-                    <p>E-mail</p>
-                    <input class="inputFormLong" type="text" name="" id="" placeholder="Votre e-mail">
-                </div>
-            </div>
-            <div class="thirdRow">
-                <div class="telephone">
-                    <p>Téléphone</p>
-                    <input class="inputFormLong" type="text" name="" id="" placeholder="Votre numéro de téléphone">
-                </div>
-            </div>
-            <div class="lastRow">
-                <div class="message">
-                    <p>Message</p>
-                    <textarea class="inputText" type="text" name="" id="" placeholder="Bonjour..."></textarea>
-                </div>
-            </div>
-            <div class="containerBtn">
-                <button>Envoyer votre message</button>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}

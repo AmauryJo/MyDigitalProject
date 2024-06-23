@@ -1,0 +1,105 @@
+.containerOffre{
+    padding: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .titleOffre{
+        text-align: center;        
+    }
+
+    .offreCard{
+        padding: 10px;
+        background-color: #F9F9F9;
+        border-radius: 7px;
+        margin-bottom: 20px;
+
+        .detailCard{
+            display: flex;
+            justify-content: space-between;
+            gap: 3%;
+
+            .leftCard{
+                width: 20%;
+                height: 100%;
+
+                .imgContainer{
+                    border-radius: 7px;
+                    width: 100%;
+                    height: 250px;
+                    background-image: url('../../img/home/offreImg.png');
+                    background-size: cover; 
+                    background-position: center; 
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .rightCard{
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+
+                .containerDate{
+                    p{
+                        color: grey
+                    }
+            }
+
+                .containerTag{
+                    display: flex;
+                    gap: 10px;
+
+                    .tagCDI, .tagTeleTravail, .tagFrance{
+                        border-radius: 3px;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        color: #0F172A;
+                        padding: 3px;
+                        border-radius: 5px;
+                    }
+                    .imgTag{
+                        margin-right: 3px;
+                    }
+                }
+
+                .containerCTA{
+                    display: flex;
+                    width: 30%;
+                    margin: auto;
+                    gap: 10%;
+
+                    .btnCta{
+                        background-color: #0F172A;
+                        border-radius: 25px;
+                        color: white;
+                        padding: 15px;
+                        border: none;
+                        font-size: 16px;
+                    }
+                    .btnVoirOffre{
+                        button{
+                            background-color: #ffff;
+                            border-radius: 25px;
+                            color: white;
+                            padding: 15px;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                            font-size: 16px;
+                            color: #0F172A
+                        }
+                    }
+                    .btnPostuler{
+                        button{
+                            background-color: #0F172A;
+                            border-radius: 25px;
+                            color: white;
+                            padding: 15px;
+                            border: none;
+                            font-size: 16px;
+                        }
+                    }
+                }
+                .containerInfo{
+                    width: 70%;
+                }
+            }
+        }
+    }
+}

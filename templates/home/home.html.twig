@@ -155,196 +155,48 @@
         <h1 class="title">Les offres <span class="greenTitle">récentes.</span></h1>
     </div>
 
-    <div class="containerGlobalOffre">
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
+<div class="containerGlobalOffre">
+        {% for offre in offresEmploi %}
+            <div class="offreCard">
+                <div class="detailCard">
+                    <div class="leftCard">
+                    {% if offre.imageFilename %} 
+                        <div class="imgContainer" style="background-image: url({{ asset('uploads/img/' ~ offre.imageFilename) }});"></div>
+                    {% else %}
+                        <div class="imgContainer"></div>
+                    {% endif %}
                     </div>
-                </div>
                     <div class="rightCard">
                         <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
+                            <p class="nomEntreprise">{{ offre.entreprise.nom }}</p>
+                            <h3>{{ offre.offreIntitule }}</h3>
+                            <p class="descriptionCard">{{ offre.offredescription }}</p>
                             <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
+                                <p>Publiée le 23/04/2024</p>
                             </div>
                             <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDD</div>
+                                {# {% if offre.teleTravail %}
+                                    <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                {% endif %} #}
                                 <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
                             </div>
                         </div>
                         <div class="containerCTA">
                             <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
+                                <button onclick="window.location.href='{{ path('app_entreprises_mesannonces', {'id': offre.id}) }}'">Voir l'offre</button>
                             </div>
                             <div class="btnPostuler">
                                 <button>Postuler</button>
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
-                    </div>
                 </div>
-                    <div class="rightCard">
-                        <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
-                            <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
-                            </div>
-                            <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                            </div>
-                        </div>
-                        <div class="containerCTA">
-                            <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
-                            </div>
-                            <div class="btnPostuler">
-                                <button>Postuler</button>
-                            </div>
-                        </div>
-                    </div>
             </div>
-        </div>
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
-                    </div>
-                </div>
-                    <div class="rightCard">
-                        <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
-                            <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
-                            </div>
-                            <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                            </div>
-                        </div>
-                        <div class="containerCTA">
-                            <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
-                            </div>
-                            <div class="btnPostuler">
-                                <button>Postuler</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
-                    </div>
-                </div>
-                    <div class="rightCard">
-                        <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
-                            <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
-                            </div>
-                            <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                            </div>
-                        </div>
-                        <div class="containerCTA">
-                            <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
-                            </div>
-                            <div class="btnPostuler">
-                                <button>Postuler</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
-                    </div>
-                </div>
-                    <div class="rightCard">
-                        <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
-                            <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
-                            </div>
-                            <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                            </div>
-                        </div>
-                        <div class="containerCTA">
-                            <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
-                            </div>
-                            <div class="btnPostuler">
-                                <button>Postuler</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    <div class="imgContainer">
-                    </div>
-                </div>
-                    <div class="rightCard">
-                        <div class="containerInfo">
-                            <p class="locationOffre">Développeur web</p>
-                            <h3>Bachelor WebDesign H/F</h3>
-                            <p class="descriptionCard">ARINFO - Ecole des métiers du Numérique - recherche un alternant pour un poste de Designer web</p>               
-                            <div class="containerDate">
-                                <p>Publiée le 20/02/2024</p>
-                            </div>
-                            <div class="containerTag">
-                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDI</div>
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                            </div>
-                        </div>
-                        <div class="containerCTA">
-                            <div class="btnVoirOffre">
-                                <button>Voir l'offre</button>
-                            </div>
-                            <div class="btnPostuler">
-                                <button>Postuler</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
-
+ 
 <div class="motEquipe">
     <div class="containerMot">
         <h1>Nous avons réuni autour de nous un collectif de passionnés<br><span class="titrePolice">pour faire emerger de nouvelles voies.</span></h1>

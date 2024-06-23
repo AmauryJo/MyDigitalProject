@@ -2,23 +2,21 @@
 
 namespace App\Controller;
 
-use App\Repository\DemandeurRepository;
+use App\Entity\OffreEmploi;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'app_home')]
-    public function home(): Response
+    public function home(EntityManagerInterface $entityManager): Response
     {
-        // $demandeurs = $demandeurRepository->findAll();
-        // $demandeur = $demandeurRepository->findOneById(1);
-        // return $this->render('home/home.html.twig',[
-        //     'demandeur' => $demandeur,
-        // ]);
+        $offresEmploi = $entityManager->getRepository(OffreEmploi::class)->findAll();
 
         return $this->render('home/home.html.twig', [
+            'offresEmploi' => $offresEmploi,
         ]);
     }
 }

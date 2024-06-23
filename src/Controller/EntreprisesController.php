@@ -15,7 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Psr\Log\LoggerInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 
 
@@ -74,7 +76,6 @@ class EntreprisesController extends AbstractController
     public function dashboard(): Response
     {
 
-
         return $this->render('recruteur/dashboard.html.twig', [
         ]);
     }
@@ -123,36 +124,84 @@ class EntreprisesController extends AbstractController
     }
 
     #[Route('/recruteur/annonce', name: 'app_entreprises_annonce')]
-    public function annonce(Request $request, EntityManagerInterface $entityManager): Response
+    public function annonce(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $offre = new OffreEmploi();
-        $form = $this->createForm(OffreEmploiType::class, $offre);
-
+        $offreEmploi = new OffreEmploi();
+        $form = $this->createForm(OffreEmploiType::class, $offreEmploi);
+    
         $form->handleRequest($request);
+    
         if ($form->isSubmitted() && $form->isValid()) {
-            // Définir l'entreprise de l'offre d'emploi (vous devrez peut-être récupérer l'entreprise connectée)
+            // Gestion de l'upload de l'image
+            $imageFile = $form->get('imageFile')->getData();
+    
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+    
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'), // Répertoire de destination configuré dans services.yaml
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                    // Par exemple, en ajoutant un message flash pour l'utilisateur
+                    $this->addFlash('error', 'Une erreur s\'est produite lors du téléchargement de l\'image.');
+                    return $this->redirectToRoute('app_entreprises_annonce');
+                }
+    
+                // Mettre à jour l'entité OffreEmploi avec le nom du fichier
+                $offreEmploi->setImageFilename($newFilename);
+            }
+
             $entreprise = $this->getUser();
-            $offre->setEntreprise($entreprise);
-
-            $entityManager->persist($offre);
+            $offreEmploi->setEntreprise($entreprise);
+    
+            // Enregistrer l'offre d'emploi en base de données
+            $entityManager->persist($offreEmploi);
             $entityManager->flush();
-
-            $this->addFlash('success', 'Offre d\'emploi ajoutée avec succès.');
-
-            return $this->redirectToRoute('app_entreprises_mesannonces');
+    
+            // Redirection vers une page de confirmation ou une autre action
+            return $this->redirectToRoute('app_entreprises_profil');
         }
-
+    
         return $this->render('recruteur/annonce.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/recruteur/mesannonces', name: 'app_entreprises_mesannonces')]
-    public function mesannonces(): Response
+    #[Route('/recruteur/mesannonces/{id}', name: 'app_entreprises_mesannonces')]
+    public function mesannonces($id, EntityManagerInterface $entityManager): Response
     {
+        $offreEmploi = $entityManager->getRepository(OffreEmploi::class)->find($id);
 
-
+        if (!$offreEmploi) {
+            throw $this->createNotFoundException('L\'annonce n\'existe pas.');
+        }
+    
         return $this->render('recruteur/mesannonces.html.twig', [
+            'offreEmploi' => $offreEmploi,
+        ]);
+    }
+
+    #[Route('/recruteur/listeannonce', name: 'app_entreprises_listeannonce')]
+    public function listeannonce( EntityManagerInterface $entityManager): Response
+    {
+        // Récupérer l'entreprise actuellement connectée
+        /** @var Entreprises|null $entreprise */
+        $entreprise = $this->getUser();
+
+        if (!$entreprise) {
+            return $this->redirectToRoute('app_entreprises_connexion');
+        }
+
+        // Récupérer toutes les offres d'emploi liées à cette entreprise
+        $offresEmploi = $entityManager->getRepository(OffreEmploi::class)->findBy(['entreprise' => $entreprise]);
+
+        return $this->render('recruteur/listeannonce.html.twig', [
+            'offresEmploi' => $offresEmploi,
         ]);
     }
 

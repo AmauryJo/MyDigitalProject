@@ -47,6 +47,7 @@ security:
         - { path: ^/home, roles: PUBLIC_ACCESS }
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/recruteur/connexion, roles: PUBLIC_ACCESS }
+        - { path: ^/recruteur/mesannonces, roles: PUBLIC_ACCESS }
         
 when@test:
     security:

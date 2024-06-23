@@ -47,6 +47,13 @@
                 'attr': {'class': 'textarea', 'placeholder': 'Missions du poste'}
             }) }}
         </div>
+        <div>
+            <p>Image</p>
+            {{ form_row(form.imageFile, {
+                'label': false,
+                'attr': {'class': 'inputForm', 'accept': 'image/jpeg, image/png, image/gif'}
+            }) }}
+        </div>
         {{ form_errors(form) }}
         <div class="btnContainer">
             <button type="submit" class="btnSubmit">Mettre en ligne</button>

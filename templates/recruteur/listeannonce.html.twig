@@ -9,43 +9,47 @@
 
 {% block body %}
 <div class="containerOffre">
-    {% for offre in offresEmploi %}
-        <div class="offreCard">
-            <div class="detailCard">
-                <div class="leftCard">
-                    {% if offre.imageFilename %} 
-                        <div class="imgContainer" style="background-image: url({{ asset('uploads/img/' ~ offre.imageFilename) }});"></div>
-                    {% else %}
-                        <div class="imgContainer"></div>
-                    {% endif %}
-                </div>
-                <div class="rightCard">
-                    <div class="containerInfo">
-                        <p class="nomEntreprise">{{ offre.entreprise.nom }}</p>
-                        <h3>{{ offre.offreintitule }}</h3>
-                        <p class="descriptionCard">{{ offre.offredescription }}</p>
-                        <div class="containerDate">
-                            <p>Publiée le 23/04/2024</p>
-                        </div>
-                        <div class="containerTag">
-                            <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDD</div>
-                            {# {% if offre.teleTravail %}
-                                <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
-                            {% endif %} #}
-                            <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
-                        </div>
+    {% if offresEmploi is empty %}
+        <h1>Vous n'avez pas d'annonce en ligne pour le moment</h1>
+    {% else %}
+        {% for offre in offresEmploi %}
+            <div class="offreCard">
+                <div class="detailCard">
+                    <div class="leftCard">
+                        {% if offre.imageFilename %} 
+                            <div class="imgContainer" style="background-image: url({{ asset('uploads/img/' ~ offre.imageFilename) }});"></div>
+                        {% else %}
+                            <div class="imgContainer"></div>
+                        {% endif %}
                     </div>
-                    <div class="containerCTA">
-                        <div class="btnVoirOffre">
-                            <button onclick="window.location.href='{{ path('app_entreprises_mesannonces', {'id': offre.id}) }}'">Voir l'offre</button>
+                    <div class="rightCard">
+                        <div class="containerInfo">
+                            <p class="nomEntreprise">{{ offre.entreprise.nom }}</p>
+                            <h3>{{ offre.offreintitule }}</h3>
+                            <p class="descriptionCard">{{ offre.offredescription }}</p>
+                            <div class="containerDate">
+                                <p>Publiée le 23/04/2024</p>
+                            </div>
+                            <div class="containerTag">
+                                <div class="tagCDI"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">CDD</div>
+                                {# {% if offre.teleTravail %}
+                                    <div class="tagTeleTravail"><img class="imgTag" src="{{ asset('img/home/teletravail.svg') }}" alt="">Télétravail</div>
+                                {% endif %} #}
+                                <div class="tagFrance"><img class="imgTag" src="{{ asset('img/home/contrat.svg') }}" alt="">France</div>
+                            </div>
                         </div>
-                        <div class="btnPostuler">
-                            <button>Postuler</button>
+                        <div class="containerCTA">
+                            <div class="btnVoirOffre">
+                                <button onclick="window.location.href='{{ path('app_entreprises_mesannonces', {'id': offre.id}) }}'">Voir l'offre</button>
+                            </div>
+                            <div class="btnPostuler">
+                                <button>Postuler</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

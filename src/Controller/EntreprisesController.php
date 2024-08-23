@@ -26,9 +26,6 @@ class EntreprisesController extends AbstractController
     #[Route('/recruteur/inscription', name: 'recruteur_inscription')]
     public function new(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('app_home');
-        // }
 
         $entreprise = new Entreprises();
         $form = $this->createForm(EntreprisesType::class, $entreprise);
@@ -36,7 +33,6 @@ class EntreprisesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Hacher le mot de passe avant de persister l'entité
             $hashedPassword = $passwordHasher->hashPassword(
                 $entreprise,
                 $entreprise->getPassword()

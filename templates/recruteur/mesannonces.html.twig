@@ -94,7 +94,8 @@
                             </div>
                         </div>
                         <div class="containerBtn">
-                            <button>Envoyer votre message</button>
+                            <button id="submitButton">Envoyer votre message</button>
+                            <p id="successMessage">La candidature a été envoyée avec succès</p>
                         </div>
                     </div>
                 </div>
@@ -113,4 +114,23 @@
             </div>
         {% endif %} #}
     </div>
+    <style>
+    #successMessage {
+        display: none;
+        color: green;
+        margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var submitButton = document.getElementById("submitButton");
+        var successMessage = document.getElementById("successMessage");
+
+        submitButton.addEventListener("click", function() {
+            successMessage.style.display = "block";
+        });
+        });
+
+    </script>
 {% endblock %}
